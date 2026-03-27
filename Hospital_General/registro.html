@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SSA</title>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> 
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="form-page">
+  <nav class="navbar">
+    <img src="logo.png" alt="Logo del IMSS" class="logo">
+    <ul class="nav-links">
+      <li><a href="home.html">Inicio</a></li>
+      <li><a href="login.html">Login</a></li>
+      
+    </ul>
+  </nav>
+  <div class="logo-formulario">
+    <img src="logo2.png" alt="Logo hospital">
+  </div>
+  <main class="main-content">
+    <div class="container">
+    <div class="header">
+      <h1>Registro de Pacientes a Urgencias</h1>
+      <p class="subtitulo">Hospital General de Valle de Santiago</p>
+    </div>
+    <div class="form-container">
+  <form id="serviceForm" novalidate class="form-container">
+  <div class="form-grid">
+
+    <!-- id del px-->
+    <div class="form-group full-width titulo-seccion"><h3>Identificación del paciente</h3></div>
+
+    <div class="form-group">
+      <select id="identificado" required>
+        <option value=""></option>
+        <option value="identificado">Sí</option>
+        <option value="noid">No identificado</option>
+      </select>
+      <label>¿Paciente identificado?</label>
+    </div>
+
+    <div class="form-group"><input type="text" id="nombre" placeholder=" "><label>Nombre(s)</label></div>
+    <div class="form-group"><input type="text" id="apellidoP" placeholder=" "><label>Apellido paterno</label></div>
+    <div class="form-group"><input type="text" id="apellidoM" placeholder=" "><label>Apellido materno</label></div>
+    <div class="form-group"><input type="text" id="alias" placeholder=" " required><label>Nombre temporal / alias</label></div>
+
+    <div class="form-group"><input type="text" id="curp" placeholder=" " pattern="[A-Z0-9]{18}"><label>CURP</label></div>
+
+    <div class="form-group">
+      <select id="sexo">
+        <option value=""></option>
+        <option>Femenino</option>
+        <option>Masculino</option>
+      </select>
+      <label>Sexo</label>
+    </div>
+
+    <div class="form-group"><input type="date" id="fechaNac"><label>Fecha de nacimiento</label></div>
+    <div class="form-group"><input type="number" id="edad"><label>Edad</label></div>
+    <div class="form-group"><input type="text" id="nacionalidad" placeholder=" "><label>Nacionalidad</label></div>
+
+    <div class="form-group">
+  <select id="estadoCivil">
+    <option value=""></option>
+    <option>Soltero(a)</option>
+    <option>Casado(a)</option>
+    <option>Unión libre</option>
+    <option>Divorciado(a)</option>
+    <option>Viudo(a)</option>
+  </select>
+  <label>Estado civil</label>
+</div>
+
+    <!--estado grnal-->
+    <div class="form-group full-width titulo-seccion"><h3>Estado general del paciente</h3></div>
+
+    <div class="form-group">
+  <input type="text" id="peso" placeholder=" ">
+  <label>Peso</label>
+</div>
+
+<div class="form-group">
+  <input type="text" id="glucosa" placeholder=" ">
+  <label>Glucosa</label>
+</div>
+
+    <div class="form-group">
+      <select id="conciencia" required>
+        <option value=""></option>
+        <option>Alerta</option>
+        <option>Responde a estímulo verbal</option>
+        <option>Responde a estímulo doloroso</option>
+        <option>Inconsciente</option>
+      </select>
+      <label>Nivel de conciencia</label>
+    </div>
+
+    <div class="form-group">
+      <select id="orientacion" required>
+        <option value=""></option>
+        <option>Orientado</option>
+        <option>Desorientado</option>
+        <option>No valorable</option>
+      </select>
+      <label>Orientación</label>
+    </div>
+
+    <div class="form-group">
+      <select id="condicion" required>
+        <option value=""></option>
+        <option>Estable</option>
+        <option>Delicado</option>
+        <option>Grave</option>
+        <option>Crítico</option>
+      </select>
+      <label>Condición general</label>
+    </div>
+
+<div class="form-group">
+  <input type="number" id="dolor" min="0" max="10" required>
+  <label>Dolor (escala 0-10)</label>
+</div>
+
+<div class="form-group">
+  <select id="movilidad" required>
+    <option value=""></option>
+    <option>Deambula</option>
+    <option>Con ayuda</option>
+    <option>Postrado</option>
+  </select>
+  <label>Movilidad</label>
+</div>
+
+<div class="form-group">
+  <select id="piel" required>
+    <option value=""></option>
+    <option>Rosada</option>
+    <option>Pálida</option>
+    <option>Cianótica</option>
+    <option>Ictérica</option>
+  </select>
+  <label>Coloración de piel</label>
+</div>
+
+<div class="form-group">
+  <select id="hidratacion" required>
+    <option value=""></option>
+    <option>Adecuada</option>
+    <option>Leve deshidratación</option>
+    <option>Moderada deshidratación</option>
+    <option>Severa deshidratación</option>
+  </select>
+  <label>Estado de hidratación</label>
+</div>
+
+<div class="form-group">
+  <input type="number" id="glasgow" min="3" max="15" required>
+  <label>Escala de Glasgow</label>
+</div>
+
+    <!--s.v -->
+    <div class="form-group full-width titulo-seccion"><h3>Signos vitales</h3></div>
+
+    <div class="form-group"><input type="text" id="ta" required><label>Tensión arterial</label></div>
+    <div class="form-group"><input type="text" id="fc" required><label>Frecuencia cardiaca</label></div>
+    <div class="form-group"><input type="text" id="fr" required><label>Frecuencia respiratoria</label></div>
+    <div class="form-group"><input type="text" id="temp" required><label>Temperatura</label></div>
+    <div class="form-group"><input type="text" id="spo2" required><label>Saturación de oxígeno</label></div>
+
+    <div class="form-group">
+      <select id="sangre" required>
+        <option value=""></option>
+        <option>Desconocido</option>
+        <option>O+</option>
+        <option>O-</option>
+        <option>A+</option>
+        <option>A-</option>
+        <option>B+</option>
+        <option>B-</option>
+        <option>AB+</option>
+        <option>AB-</option>
+      </select>
+      <label>Tipo de sangre</label>
+    </div>
+
+    <!--triage-->
+    <div class="form-group full-width titulo-seccion"><h3>Clasificación de urgencia (Triage)</h3></div>
+
+    <div class="form-group">
+      <select id="triage" required>
+        <option value=""></option>
+        <option>Rojo - Atención inmediata</option>
+        <option>Amarillo - Urgente</option>
+        <option>Verde - No urgente</option>
+      </select>
+      <label>Nivel de prioridad</label>
+    </div>
+
+    <div class="form-group">
+  <select id="tiempoEspera" required>
+    <option value=""></option>
+    <option>Inmediato (0 minutos)</option>
+    <option>Menos de 10 minutos</option>
+    <option>Menos de 30 minutos</option>
+    <option>Menos de 60 minutos</option>
+    <option>Puede esperar más de 2 horas</option>
+  </select>
+  <label>Tiempo estimado de atención</label>
+</div>
+
+    <!--motivo-->
+    <div class="form-group full-width titulo-seccion"><h3>Motivo de ingreso</h3></div>
+
+    <div class="form-group full-width">
+      <textarea id="motivo" placeholder=" " required></textarea>
+      <label>Descripción del motivo</label>
+    </div>
+
+    <!--antecedentes-->
+    <div class="form-group full-width titulo-seccion"><h3>Antecedentes médicos</h3></div>
+
+    <div class="form-group full-width">
+      <textarea id="antecedentes" placeholder=" "></textarea>
+      <label>Enfermedades crónicas, alergias, cirugías previas</label>
+    </div>
+
+    <!--info contac.-->
+    <div class="form-group full-width titulo-seccion"><h3>Información de contacto (si está disponible)</h3></div>
+
+
+    <div class="form-group"><input type="text" id="contacto" placeholder=" "><label>Nombre de contacto</label></div>
+    <div class="form-group">
+  <select id="parentesco">
+    <option value=""></option>
+    <option>Padre</option>
+    <option>Madre</option>
+    <option>Hermano(a)</option>
+    <option>Esposo(a)</option>
+    <option>Hijo(a)</option>
+    <option>Familiar</option>
+    <option>Amigo(a)</option>
+    <option>Tutor</option>
+    <option>Otro</option>
+  </select>
+  <label>Parentesco</label>
+</div>
+
+
+    <div class="form-group"><input type="tel" id="telefono" placeholder=" "><label>Teléfono</label></div>
+    <div class="form-group">
+  <input type="tel" id="contactoEmergencia" placeholder=" ">
+  <label>Teléfono de emergencia</label>
+</div>
+
+<div class="form-group full-width"><input type="text" id="direccion" placeholder=" "><label>Dirección</label></div>
+
+    <!--datos de llegada-->
+    <div class="form-group full-width titulo-seccion"><h3>Datos de ingreso</h3></div>
+
+    <div class="form-group"><input type="date" id="fechaIngreso" required><label>Fecha de ingreso</label></div>
+    <div class="form-group"><input type="time" id="horaIngreso" required><label>Hora de ingreso</label></div>
+
+    <div class="form-group">
+      <select id="llegada" required>
+        <option value=""></option>
+        <option>Ambulancia</option>
+        <option>Por sus propios medios</option>
+        <option>Referido</option>
+      </select>
+      <label>Forma de llegada</label>
+    </div>
+
+    <div class="form-group">
+  <select id="institucionAmbulancia">
+    <option value="" disabled selected></option>
+    <option value="Cruz Roja">Cruz Roja</option>
+    <option value="Protección Civil">Protección Civil</option>
+    <option value="Ambulancia privada">Ambulancia privada</option>
+    <option value="Hospital de referencia">Hospital de referencia</option>
+    <option value="Otro">Otro</option>
+  </select>
+  <label>Institución de la ambulancia</label>
+</div>
+
+<div class="form-group">
+  <input type="text" id="unidadAmbulancia" placeholder=" ">
+  <label>Número de unidad de ambulancia</label>
+</div>
+
+<div class="form-group">
+  <input type="text" id="personalAmbulancia" placeholder=" ">
+  <label>Paramédico / personal que entrega</label>
+</div>
+
+    <div class="form-group">
+    <select id="motivoTraslado" required>
+      <option value="" disabled selected></option>
+      <option value="Accidente automovilístico">Accidente automovilístico</option>
+      <option value="Caída">Caída</option>
+      <option value="Dolor torácico">Dolor torácico</option>
+      <option value="Dificultad respiratoria">Dificultad respiratoria</option>
+      <option value="Pérdida de la conciencia">Pérdida de la conciencia</option>
+      <option value="Convulsión">Convulsión</option>
+      <option value="Otro">Otro</option>
+    </select>
+    <label>Motivo del traslado</label>
+  </div>
+
+
+  <div class="form-group">
+    <select id="atencionAmbulancia" required>
+      <option value="" disabled selected></option>
+      <option value="Valoración inicial">Valoración inicial</option>
+      <option value="Oxigenoterapia">Oxigenoterapia</option>
+      <option value="Inmovilización">Inmovilización</option>
+      <option value="Control de hemorragia">Control de hemorragia</option>
+      <option value="Monitoreo de signos vitales">Monitoreo de signos vitales</option>
+      <option value="Reanimación cardiopulmonar">RCP</option>
+      <option value="Ninguna">Ninguna</option>
+    </select>
+    <label>Atención brindada durante el traslado</label>
+  </div>
+
+
+  <div class="form-group">
+    <select id="medicamentosAmbulancia">
+      <option value="" disabled selected></option>
+      <option value="Ninguno">Ninguno</option>
+      <option value="Analgésicos">Analgésicos</option>
+      <option value="Adrenalina">Adrenalina</option>
+      <option value="Salbutamol">Salbutamol</option>
+      <option value="Glucosa">Glucosa</option>
+      <option value="Sedantes">Sedantes</option>
+    </select>
+    <label>Medicamentos administrados en ambulancia</label>
+  </div>
+
+
+  <div class="form-group">
+    <select id="estadoTraslado" required>
+      <option value="" disabled selected></option>
+      <option value="Estable">Estable</option>
+      <option value="Inestable">Inestable</option>
+      <option value="Crítico">Crítico</option>
+      <option value="Consciente">Consciente</option>
+      <option value="Inconsciente">Inconsciente</option>
+    </select>
+    <label>Estado del paciente durante el traslado</label>
+  </div>
+  <div class="form-group"><input type="text" id="enfermero" required><label>Enfermero responsable</label></div>
+  <div class="form-group"><input type="text" id="medico" required><label>Médico responsable</label></div>
+  </div>
+
+    <div class="terminos-container">
+    <input type="checkbox" id="terminos">
+    <label for="terminos">Acepto los términos y condiciones</label>
+  </div>
+
+    <div class="buttons">
+      <button type="button" class="btn-enviar" onclick="generarpdf()">Imprimir expediente</button> <!-- boton para generar el pdf -->
+      <button type="reset" class="btn-limpiar">Limpiar</button>
+    </div>
+
+  </form>
+</div>
+
+    </div>
+  </div>
+  </main>
+  <footer class="footer">
+  <div class="footer-content">
+    <div>
+      <h4>SSA</h4>
+      <p>Secretaría de Salud</p>
+      <p>© 2026 Todos los derechos reservados</p>
+      <p class="aviso">Portal con fines académicos</p>
+    </div>
+
+    <div>
+      <h4>Enlaces</h4>
+      <p>Aviso de Privacidad</p>
+      <p>Términos y Condiciones</p>
+      <p>Transparencia</p>
+    </div>
+
+    <div>
+      <h4>Contacto</h4>
+      <p>800 623 2323</p>
+      <p>atencion@ssa.gob.mx</p>
+      <p>Ciudad de México</p>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+<script src="java.js"></script>
+</body>
+</html>
+
