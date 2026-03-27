@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IMSS</title>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> 
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="form-page">
+  <nav class="navbar">
+    <img src="images/logo.png" alt="Logo del IMSS" class="logo">
+    <ul class="nav-links">
+      <li><a href="home.html">Inicio</a></li>
+      <li><a href="cita.html">Citas</a></li>
+      <li><a href="#">Trámites</a></li>
+      <li><a href="#">Cuenta</a></li>
+    </ul>
+  </nav>
+  <main class="main-content">
+    <div class="container">
+    <div class="header">
+      <h1>Sistema de Registro de Citas Médicas</h1>
+      <p class="subtitulo">Instituto Mexicano del Seguro Social</p>
+    </div>
+    <div class="form-container">
+        <form id="serviceForm" novalidate class="form-container">
+          <div class="form-grid">
+            <div class="form-group full-width titulo-seccion"><h3>Datos del paciente</h3></div>
+            <div class="form-group"><input type="text" placeholder=" " required><label>Nombre(s)</label></div>
+            <div class="form-group"><input type="text" placeholder=" " required><label>Apellido paterno</label></div>
+            <div class="form-group"><input type="text" placeholder=" " required><label>Apellido materno</label></div>
+            <div class="form-group"><input type="text" placeholder=" " required pattern="[A-Z0-9]{18}"><label>CURP</label></div>
+            <div class="form-group"><input type="text" placeholder=" " required pattern="[0-9]{11}"><label>NSS</label></div>
+            <div class="form-group"><input type="date" placeholder=" " required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"><label>Fecha de nacimiento</label></div>
+            <div class="form-group"><select required><option value=""></option><option value="Femenino">Femenino</option><option value="masculino">Masculino</option></select><label>Sexo</label></div>
+            <div class="form-group full-width titulo-seccion"><h3>Información de contacto</h3></div>
+            <div class="form-group"><input type="tel" placeholder=" " required pattern="[0-9]{10}"><label>Télefono celular</label></div>
+            <div class="form-group"><input type="email" placeholder=" " required><label>Correo electrónico</label></div>
+            <div class="form-group full-width titulo-seccion"><h3>Datos de la cita</h3></div>
+            <div class="form-group"><select required><option value=""></option><option value="gto">Guanajuato</option><option value="cdmx">Ciudad de México</option><option value="gto">Guanajuato</option><option value="jalisco">Jalisco</option><option value="nl">Nuevo Léon</option></select><label>Entidad Federativa</label></div>
+            <div class="form-group"><select required><option value=""></option><option value="gto">Guanajuato</option><option value="uno">Unidad de Medicina Familiar no.1</option><option value="cientodiecinueve">Unidad de Medicina Familiar no.119</option><option value="dos">Hospital General de la Zona no.2</option><option value="regional">Hospital regional</option></select><label>Unidad Médica</label></div>
+            <div class="form-group"><select required><option value="" required></option><option value="matutino">Matutino</option><option value="verspertino">Vespertino</option></select><label>Turno</label></div>
+            <div class="form-group"><select required><option value="" required></option><option value="uno">1</option><option value="dos">2</option><option value="tres">3</option><option value="cuatro">4</option></select><label>No. Consultorio</label></div>
+            <div class="form-group"><select required><option value="" required></option><option value="mg">Medicina General</option><option value="pediatria">Pediatría</option><option value="gineco">Ginecología</option><option value="cardio">Cardiología</option><option value="tx">Traumatología y Ortopedia</option><option value="mi">Medicina Interna</option><option value="dermatologia">Dermatología</option><option value="oftalmologia">Oftalmología</option><option value="laboratorio">Laboratorio</option><option value="radiologia">Radiología</option></select><label>Área médica</label></div>
+            <div class="form-group"><input type="date" placeholder=" " required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"><label>Fecha de la cita</label></div>
+            <div class="form-group"><input type="time" placeholder=" " required pattern="[0-9]{2}:[0-9]{2}"><label>Hora de la cita</label></div>
+            <div class="form-group full-width"><textarea placeholder=" "></textarea><label>Motivo de la consulta</label></div>
+          </div>
+          <div class="buttons">
+            <button type="submit" class="btn-enviar">Confirmar cita</button>
+            <button type="reset" class="btn-limpiar">Limpiar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  </main>
+  <footer class="footer">
+  <div class="footer-content">
+    <div>
+      <h4>IMSS</h4>
+      <p>Instituto Mexicano del Seguro Social</p>
+      <p>© 2026 Todos los derechos reservados</p>
+      <p class="aviso">Portal con fines académicos</p>
+    </div>
+
+    <div>
+      <h4>Enlaces</h4>
+      <p>Aviso de Privacidad</p>
+      <p>Términos y Condiciones</p>
+      <p>Transparencia</p>
+    </div>
+
+    <div>
+      <h4>Contacto</h4>
+      <p>800 623 2323</p>
+      <p>atencion@imss.gob.mx</p>
+      <p>Ciudad de México</p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
+
