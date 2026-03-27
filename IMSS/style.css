@@ -47,11 +47,11 @@ cursor:pointer;transition:all .25s ease;} /* Animación hover */
 .btn-limpiar{background:#e2e8f0;color:#000000;} /* Botón limpiar */
 
 body.home{ /* Cuerpo del documento */
-background:linear-gradient(rgba(0,0,0,.10),rgba(0,0,0,.10)),url('images/home.png') center/cover no-repeat fixed; /* Imagen local con degradado */
+background:linear-gradient(rgba(0,0,0,.10),rgba(0,0,0,.10)),url('home.png') center/cover no-repeat fixed; /* Imagen local con degradado */
 background-attachment:fixed; /* Evita que se repita al hacer scroll */
 }
 body.form-page{ /* Cuerpo del documento */
-background:linear-gradient(rgba(0,0,0,.10),rgba(0,0,0,.10)),url('images/citas.png') center/cover no-repeat fixed; /* Imagen local con degradado */
+background:linear-gradient(rgba(0,0,0,.10),rgba(0,0,0,.10)),url('citas.png') center/cover no-repeat fixed; /* Imagen local con degradado */
 background-attachment:fixed; animation: movimiento 15s infinite alternate;/* Evita que se repita al hacer scroll */
 }/* Animación de desvanecimiento */
 
