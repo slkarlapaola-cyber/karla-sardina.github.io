@@ -82,80 +82,83 @@ background-attachment:fixed; animation: movimiento 15s infinite alternate;/* Evi
     text-align: center;
 }
 
-/* --- RESPONSIVIDAD PARA EL SISTEMA IMSS --- */
-
-/* --- SOLUCIÓN UNIFICADA INDEX Y CITAS --- */
+/* --- SOLUCIÓN DE ALTA PRIORIDAD PARA IMSS --- */
 
 @media screen and (max-width: 820px) {
-    /* 1. CORRECCIÓN DE FONDO (Para que cubra toda la pantalla siempre) */
-    body.home, body.form-page {
-        background-attachment: scroll !important; /* Mejor rendimiento en móviles */
+    /* 1. Forzar que el fondo cubra TODA la pantalla en móviles */
+    html body.home, 
+    html body.form-page {
+        background-attachment: scroll !important;
         background-size: cover !important;
-        background-position: center !important;
+        background-position: center center !important;
+        height: auto !important;
         min-height: 100vh !important;
         display: flex !important;
         flex-direction: column !important;
-        overflow-x: hidden !important;
     }
 
-    /* 2. CORRECCIÓN INDEX (El contenedor que no se movía) */
-    .main-content {
-        display: flex !important;
-        flex-direction: column !important;
-        padding: 20px 10px !important;
+    /* 2. RE-ESTRUCTURACIÓN DEL CONTENIDO (Index y Citas) */
+    html body .main-content {
+        display: block !important; /* Cambiamos a block para que el scroll sea natural */
         width: 100% !important;
-        height: auto !important;
-        justify-content: flex-start !important;
+        padding: 80px 15px 20px 15px !important; /* Espacio para el nav fijo */
     }
 
-    .container.home-container, .container {
-        position: relative !important; /* Quita el absolute del index */
+    /* Selector ultra-específico para romper el position:absolute del index */
+    html body .container.home-container, 
+    html body .container {
+        position: relative !important;
         top: 0 !important;
         right: 0 !important;
+        left: 0 !important;
         transform: none !important;
         width: 100% !important;
-        max-width: 95% !important;
+        max-width: 100% !important;
         height: auto !important;
-        margin: 20px auto !important; /* Centrado manual */
+        margin: 0 auto 30px auto !important;
         display: block !important;
+        background: rgba(255, 255, 255, 0.1) !important; /* Un poco de contraste */
     }
 
-    /* 3. CORRECCIÓN DE FORMULARIO (Grid de Citas) */
-    .form-grid {
-        grid-template-columns: 1fr !important; /* Una sola columna */
-        gap: 1.2rem !important;
+    /* 3. AJUSTES DEL FORMULARIO DE CITAS */
+    html body .form-grid {
+        grid-template-columns: 1fr !important; /* Una sola columna obligatoria */
+        gap: 1rem !important;
     }
 
-    .form-container {
-        padding: 1rem !important;
+    html body .full-width {
+        grid-column: span 1 !important;
     }
 
-    /* 4. ELEMENTOS DE INTERFAZ (Nav y Footer) */
-    .navbar {
+    /* 4. NAVBAR Y FOOTER */
+    html body .navbar {
         flex-direction: column !important;
+        padding: 10px !important;
         height: auto !important;
-        padding: 15px !important;
     }
 
-    .nav-links {
-        padding-top: 15px;
-        gap: 15px !important;
+    html body .nav-links {
+        padding: 10px 0 !important;
+        gap: 10px !important;
         flex-wrap: wrap;
         justify-content: center;
     }
 
-    .footer-content {
+    html body .footer-content {
         grid-template-columns: 1fr !important;
         text-align: center;
         gap: 20px !important;
     }
 
-    /* Botones a lo ancho del celular */
-    .buttons {
+    /* Botones fáciles de presionar */
+    html body .buttons {
         flex-direction: column !important;
+        gap: 10px !important;
     }
-    
-    .buttons button, .buttons a {
+
+    html body .buttons button, 
+    html body .buttons a {
         width: 100% !important;
+        display: block !important;
     }
 }
