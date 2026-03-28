@@ -1,115 +1,258 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Portafolio - Karla Sardina</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karla | Portafolio Desarrollador Web</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #f9f7f2; /* Tono papel de revista */
+            --text-primary: #1a1a1a;
+            --accent: #8b7e66; /* Dorado apagado/editorial */
+            --serif: 'Playfair Display', serif;
+            --sans: 'Inter', sans-serif;
+        }
 
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f5f5f5;
-      margin: 0;
-      text-align: center;
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    header {
-      background-color: teal;
-      color: white;
-      padding: 30px;
-    }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: var(--sans);
+            line-height: 1.6;
+            padding: 0 4%;
+        }
 
-    section {
-      padding: 20px;
-    }
+        /* --- NAVBAR --- */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 0;
+            border-bottom: 1px solid #000;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: bold;
+        }
 
-    .proyecto {
-      background: white;
-      margin: 15px auto;
-      padding: 15px;
-      width: 80%;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
+        .logo-left { font-size: 1.2rem; }
+        .logo-right { 
+            font-family: var(--serif);
+            font-size: 2rem;
+            border: 1px solid #000;
+            padding: 0 10px;
+        }
 
-    a {
-      text-decoration: none;
-      color: teal;
-      font-weight: bold;
-    }
+        /* --- HERO --- */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: end;
+            padding: 60px 0;
+            gap: 40px;
+            border-bottom: 1px solid #000;
+        }
 
-    a:hover {
-      text-decoration: underline;
-    }
-  </style>
+        .hero img {
+            width: 100%;
+            height: 425px;
+            object-fit: cover;
+            filter: grayscale(100%);
+            transition: filter 0.5s ease;
+        }
+
+        .hero img:hover { filter: grayscale(0%); }
+
+        .hero h1 {
+            font-family: var(--serif);
+            font-size: clamp(4rem, 10vw, 8rem);
+            line-height: 0.8;
+            text-transform: uppercase;
+            margin-bottom: -10px;
+        }
+
+        /* --- SOBRE MÍ --- */
+        .sobre-mi {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            padding: 80px 0;
+            gap: 40px;
+        }
+
+        .sobre-mi h2 {
+            font-family: var(--serif);
+            font-size: 3rem;
+            text-transform: uppercase;
+            font-style: italic;
+        }
+
+        .sobre-mi p {
+            font-size: 1.2rem;
+            max-width: 500px;
+            align-self: center;
+            text-align: justify;
+        }
+
+        /* --- PROYECTOS --- */
+        .proyectos {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2px; /* Espacio mínimo para simular líneas de revista */
+            background-color: #000; /* Color de las líneas divisorias */
+            border: 1px solid #000;
+            margin-bottom: 100px;
+        }
+
+        .card {
+            background-color: var(--bg-color);
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 400px;
+            transition: background-color 0.3s ease;
+        }
+
+        .card:hover { background-color: #fff; }
+
+        .card h3 {
+            font-family: var(--serif);
+            font-size: 2rem;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            line-height: 1.1;
+        }
+
+        .card p {
+            font-size: 0.9rem;
+            color: #555;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .card a {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            border-bottom: 1px solid var(--text-primary);
+            width: fit-content;
+            padding-bottom: 5px;
+            transition: color 0.3s;
+        }
+
+        .card a:hover {
+            color: var(--accent);
+            border-color: var(--accent);
+        }
+
+        /* Ajuste para que el primer proyecto sea más grande*/
+        .card:first-child {
+            grid-column: span 2;
+        }
+
+        @media (max-width: 768px) {
+            .hero, .sobre-mi { grid-template-columns: 1fr; }
+            .card:first-child { grid-column: span 1; }
+            .hero h1 { font-size: 4rem; }
+        }
+    </style>
 </head>
-
 <body>
 
-<header>
-  <h1>Karla Sardina</h1>
-  <p>Pasante Desarrollo de Software Multiplataforma</p>
-</header>
-
-<section>
-  <h2>Sobre mí</h2>
-  <p>
-    Soy estudiante de Desarrollo de Software Multiplataforma con enfoque en desarrollo web.
-    Cuento con formación en mercadotecnia, lo que me permite crear sitios enfocados en el usuario
-    y en objetivos digitales.
-  </p>
-</section>
-
-<section>
-  <h2>Proyectos</h2>
-
-  <div class="proyecto">
-    <h3>Último Trámite</h3>
-    <p>Sistema web para apoyo en trámites postmortem.</p>
-    <a href="https://ultimotramite.lovestoblog.com/vista/first.php" target="_blank">Ver diseño</a>
-  </div>
-  
-  <div class="proyecto">
-    <h3>Sistema Hospital General</h3>
-    <p>Sistema web con interfaz para registro y gestión de pacientes.</p>
-    <a href="Hospital_General/">Ver proyecto</a>
+  <div class="navbar">
+    <div class="logo-left">Karla</div>
+    <div class="logo-right">K</div>
   </div>
 
-  <div class="proyecto">
-    <h3>Instituto Mexicano del Seguro social</h3>
-    <p>Sistema web con interfaz para gestión de pacientes.</p>
-    <a href="IMSS/">Ver proyecto</a>
+  <div class="hero">
+    <img src="karla.jpeg" alt="Karla - Web Developer">
+    <h1>Web<br>Dev</h1>
   </div>
 
-  <div class="proyecto">
-    <h3>Perfumera</h3>
-    <p>Sistema web con interfaz para solicitud de muestras de producto.</p>
-    <a href="Perfumera/">Ver proyecto</a>
+  <div class="sobre-mi">
+    <h2>Sobre mí</h2>
+    <p>
+      Soy desarrolladora web en formación con enfoque en frontend.
+      Me interesa crear soluciones digitales funcionales y centradas en el usuario, 
+      fusionando la estética editorial con la arquitectura de código.
+    </p>
   </div>
 
-  <div class="proyecto">
-    <h3>Insignias</h3>
-    <p>Sitio web de insignias de superhéroes.</p>
-    <a href="Insignias/">Ver proyecto</a>
+  <div style="border-top: 1px solid #000; padding: 20px 0;">
+      <h2 style="font-family: var(--serif); text-transform: uppercase;">Selected Works — 2026</h2>
   </div>
 
-  <div class="proyecto">
-    <h3>Aplicación móvil</h3>
-    <p>Aplicación desarrollada para compra de cursos académicos.</p>
-    <a href="app.apk" download>Descargar APK</a>
+  <div class="proyectos">
+
+    <div class="card">
+      <div>
+        <h3>Último Trámite</h3>
+        <p>Sistema web para apoyo en trámites postmortem. Un enfoque humano a la tecnología.</p>
+      </div>
+      <a href="https://ultimotramite.lovestoblog.com/vista/first.php" target="_blank">View Case Study</a>
+    </div>
+    
+    <div class="card">
+      <div>
+        <h3>Hospital General</h3>
+        <p>Gestión de datos médicos con interfaz optimizada.</p>
+      </div>
+      <a href="Hospital_General/" target="_blank">Explore Project</a>
+    </div>
+
+    <div class="card">
+      <div>
+        <h3>IMSS</h3>
+        <p>Arquitectura de software para la gestión de pacientes a gran escala.</p>
+      </div>
+      <a href="IMSS/" target="_blank">Explore Project</a>
+    </div>
+
+    <div class="card">
+      <div>
+        <h3>Perfumera</h3>
+        <p>E-commerce experimental para solicitud de muestras.</p>
+      </div>
+      <a href="Perfumera/" target="_blank">View Site</a>
+    </div>
+
+    <div class="card">
+      <div>
+        <h3>Insignias</h3>
+        <p>Exploración visual de iconos y SVG de superhéroes.</p>
+      </div>
+      <a href="Insignias/" target="_blank">View Project</a>
+    </div>
+
+    <div class="card">
+      <div>
+        <h3>App Cursos</h3>
+        <p>Diseño y desarrollo de aplicación móvil académica.</p>
+      </div>
+      <a href="https://drive.google.com/file/d/1vTiubDL7Ao1VwCYOZ09RYBj7iO4DvyG8/view?usp=sharing" target="_blank">Download APK</a>
+    </div>
+
+    <div class="card">
+      <div>
+        <h3>UI Design</h3>
+        <p>Prototipado en Figma con enfoque en experiencia de usuario.</p>
+      </div>
+      <a href="https://www.figma.com/design/PJYYQzQSC2rD4tmxic5BMW/Untitled?node-id=0-1&t=fwATtpE1CGTAnm8r-1" target="_blank">View Figma</a>
+    </div>
+
   </div>
 
-  <div class="proyecto">
-    <h3>Diseño UI en Figma</h3>
-    <p>Prototipo de interfaz centrado en experiencia de usuario.</p>
-    <a href="https://www.figma.com/design/PJYYQzQSC2rD4tmxic5BMW/Untitled?node-id=0-1&t=9bAbd9BHoi9xgcMb-1" target="_blank">Ver diseño</a>
-  </div>
-
-</section>
-
-<section>
-  <h2>Celular: 332 489 0435</h2>
-  <p>Email: sl.karla.paola@gmail.com</p>
-</section>
+  <footer style="padding: 50px 0; text-align: center; border-top: 1px solid #000; font-family: var(--serif); font-style: italic;">
+      © 2026 Karla — Diseñando el futuro del código.
+  </footer>
 
 </body>
 </html>
