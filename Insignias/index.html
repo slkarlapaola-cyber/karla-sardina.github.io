@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Perfil de Héroe</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-light">
+
+  <div class="container text-center mt-5">
+    <h1 class="display-4 text-primary">
+      Academia de Héroes Cyber Tech
+    </h1>
+
+    <p class="lead">
+      Aprende a maquetar con Bootstrap Power
+    </p>
+  </div>
+
+  <body class="bg-light">
+
+  <!-- HEADER
+  <header class="bg-dark text-white py-5 text-center">
+    <div class="container">
+      
+      <h1 class="display-4">
+        Academia de Héroes Cyber Tech
+      </h1>
+
+      <p class="lead">
+        Aprende a maquetar con Bootstrap Power
+      </p>
+
+    </div>
+  </header>-->
+
+  <!-- CONTENEDOR DE CARDS -->
+  <div class="container mt-5">
+    <div class="d-flex justify-content-center gap-4 flex-wrap">
+
+      <!-- THALASSA -->
+      <div>
+        <div class="card" style="width: 18rem;">
+          <img src="insignia.png" class="card-img-top img-uniforme">
+
+          <div class="card-body">
+            <h5 class="card-title">Thalassa</h5>
+
+            <!-- TEXTO CLICKEABLE -->
+            <div class="card-text" data-bs-toggle="collapse" href="#textoThalassa" style="cursor: pointer;">
+              
+              <ul>
+                <li>Control del código</li>
+                <li>Maestría en diseño web</li>
+                <li>Velocidad de carga instantánea</li>
+                <li>Protección contra bugs</li>
+                <li>Adaptabilidad total</li>
+              </ul>
+
+              Domina HTML, CSS y Bootstrap para construir interfaces claras y poderosas...
+
+              <!-- TEXTO OCULTO -->
+              <div class="collapse" id="textoThalassa">
+                Como reina de los océanos digitales, mantiene el orden del código y protege los proyectos del caos y los errores.
+                Bootstrap es su herramienta favorita porque le permite crear diseños rápidos, organizados y responsivos.
+              </div>
+
+            </div>
+
+            <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#modalThalassa">
+              Ver SuperPoder
+            </button>
+          </div>
+        </div>
+
+        <!-- MODAL THALASSA -->
+        <div class="modal fade" id="modalThalassa">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5>Demostración de SuperPoder</h5>
+                <button class="btn-close" data-bs-dismiss="modal"></button>
+              </div>
+              <div class="modal-body">
+                <div class="ratio ratio-16x9">
+                  <video controls>
+                    <source src="vide2.mp4" type="video/mp4">
+                  </video>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CODE WAVE -->
+      <div>
+        <div class="card" style="width: 18rem;">
+          <img src="imgclara.png" class="card-img-top img-uniforme">
+
+          <div class="card-body">
+            <h5 class="card-title">Code Wave</h5>
+            <!--<h4 class="text-info-emphasis card-title">Code Wave Secundino</h4>-->
+
+            <div class="card-text" data-bs-toggle="collapse" href="#textoSecundino" style="cursor: pointer;">
+  
+              <ul>
+                <li>Capacidad de documentar el código</li>
+                <li>Optimizador de textos</li>
+                <li>Dominio del teclado</li>
+                <li>Escaner de funciones</li>
+                <li>Conectador de piezas</li>
+              </ul>
+
+              Domina HTML, CSS y Bootstrap para construir interfaces claras y poderosas...
+
+              <!-- TEXTO OCULTO -->
+              <div class="collapse" id="textoSecundino">
+                Su habilidad principal es transformar ideas complejas en soluciones simples y bien estructuradas.
+                Analiza, organiza y conecta cada parte del código para lograr resultados eficientes y funcionales.
+              </div>
+
+            </div>
+
+            <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#modalSecundino">
+              Ver SuperPoder
+            </button>
+          </div>
+        </div>
+
+        <!-- MODAL CODE WAVE -->
+        <div class="modal fade" id="modalSecundino">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5>Demostración de poder</h5>
+                <button class="btn-close" data-bs-dismiss="modal"></button>
+              </div>
+              <div class="modal-body">
+                <div class="ratio ratio-16x9">
+                  <video controls>
+                    <source src="videoclara.mp4" type="video/mp4">
+                  </video>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- VOID BLADE -->
+      <div>
+        <div class="card" style="width: 18rem;">
+          <img src="imgivan.png" class="card-img-top img-uniforme">
+
+          <div class="card-body">
+            <h5 class="card-title">Void Blade</h5>
+
+            <div class="card-text" data-bs-toggle="collapse" href="#textoVoid" style="cursor: pointer;">
+  
+              <ul>
+                <li>Bugs encontrados</li>
+                <li>Domina el código</li>
+                <li>Control del código con velocidad</li>
+                <li>Eliminador de errores</li>
+                <li>Gestor de memoria</li>
+              </ul>
+
+              Maestro del vacío digital, corta bugs antes de que existan y domina el caos del código...
+
+              <!-- TEXTO OCULTO -->
+              <div class="collapse" id="textoVoid">
+                Su conexión con el vacío le permite detectar fallos antes de que ocurran.
+                Analiza estructuras complejas y elimina errores con precisión absoluta,
+                manteniendo la estabilidad del sistema en todo momento.
+              </div>
+
+            </div>
+
+            <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#modalVoid">
+              Ver SuperPoder
+            </button>
+          </div>
+        </div>
+
+        <!-- MODAL VOID -->
+        <div class="modal fade" id="modalVoid">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5>Poder del Vacío</h5>
+                <button class="btn-close" data-bs-dismiss="modal"></button>
+              </div>
+              <div class="modal-body">
+                <div class="ratio ratio-16x9">
+                  <video controls>
+                    <source src="videoivan.mp4" type="video/mp4">
+                  </video>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TECNOGOD -->
+      <div>
+        <div class="card" style="width: 18rem;">
+          <img src="imgheri.png" class="card-img-top img-uniforme">
+
+          <div class="card-body">
+            <h5 class="card-title">Tecnogod</h5>
+
+            <div class="card-text" data-bs-toggle="collapse" href="#textoTecno" style="cursor: pointer;">
+  
+              <ul>
+                <li>Backend de rayos</li>
+                <li>Super material design</li>
+                <li>Prompts sonicos de super potencia</li>
+                <li>Frontend supremo XL</li>
+                <li>Gestor de memoria</li>
+              </ul>
+
+              No es solo un desarrollador; es una entidad que fusiona la lógica con la divinidad digital...
+
+              <!-- TEXTO OCULTO -->
+              <div class="collapse" id="textoTecno">
+                Equipado con habilidades avanzadas, es capaz de construir sistemas complejos y visualmente impactantes.
+                Su dominio del código le permite transformar ideas en experiencias digitales poderosas,
+                llevando cada proyecto a un nivel superior.
+              </div>
+
+            </div>
+
+            <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#modalTecno">
+              Ver SuperPoder
+            </button>
+          </div>
+        </div>
+
+        <!-- MODAL TECNOGOD -->
+        <div class="modal fade" id="modalTecno">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+              <div class="modal-header">
+                <h5>Poder Activado</h5>
+                <button class="btn-close" data-bs-dismiss="modal"></button>
+              </div>
+
+              <div class="modal-body p-0">
+                <div class="ratio ratio-16x9">
+                  <video controls>
+                    <source src="videoheri.mp4" type="video/mp4">
+                  </video>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
