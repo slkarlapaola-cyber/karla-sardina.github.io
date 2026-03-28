@@ -258,10 +258,7 @@ body::before{
   font-size: 14px;
 }
 
-/* --- MEDIA QUERIES CORRECTIVAS --- */
-
 @media screen and (max-width: 820px) {
-    /* Forzamos al contenedor a comportarse como un bloque normal */
     body.home .home-container {
         position: static !important;
         transform: none !important;
@@ -290,7 +287,6 @@ body::before{
         overflow-x: hidden !important;
     }
 
-    /* Footer y Navbar */
     .footer-content { grid-template-columns: 1fr !important; }
     .navbar { flex-direction: column !important; }
 }
