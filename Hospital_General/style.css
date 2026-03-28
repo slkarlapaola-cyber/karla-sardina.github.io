@@ -261,66 +261,36 @@ body::before{
 /* --- MEDIA QUERIES CORRECTIVAS --- */
 
 @media screen and (max-width: 820px) {
-    /* 1. Forzamos al cuerpo y contenido a no tener desbordamiento horizontal */
-    body.home, .main-content {
-        overflow-x: hidden !important;
-        display: flex !important;
-        flex-direction: column !important;
-        justify-content: flex-start !important;
-        align-items: center !important;
-        height: auto !important;
-        min-height: 100vh !important;
-        padding: 10px !important;
-    }
-
-    /* 2. RE-POSICIONAMIENTO DEL CONTENEDOR (Quitamos el absoluto) */
-    .container.home-container {
-        position: relative !important;
-        top: 0 !important;
-        right: 0 !important;
+    /* Forzamos al contenedor a comportarse como un bloque normal */
+    body.home .home-container {
+        position: static !important;
         transform: none !important;
         width: 100% !important;
         max-width: 100% !important;
+        margin: 20px auto !important;
         height: auto !important;
-        margin: 80px 0 20px 0 !important; /* Espacio para el navbar y margen inferior */
-        display: block !important;
     }
 
-    /* 3. EL AVISO (Eliminamos el error del lado derecho) */
-    p.aviso-home {
-        position: relative !important; /* Cambiado de absolute a relative */
-        top: 0 !important;
-        right: 0 !important;
-        left: 0 !important;
+    /* Forzamos al aviso a ir debajo */
+    body.home .aviso-home {
+        position: static !important;
+        display: block !important;
         width: 100% !important;
-        margin: 10px 0 40px 0 !important; /* Margen superior e inferior */
         text-align: center !important;
+        margin: 20px 0 !important;
+        right: auto !important;
+        left: auto !important;
+        transform: none !important;
+    }
+
+    /* Evitamos el desplazamiento lateral */
+    body.home .main-content {
         display: block !important;
-        opacity: 1 !important;
+        padding: 15px !important;
+        overflow-x: hidden !important;
     }
 
-    /* 4. Ajustes de estructura interna */
-    .form-container, .form-containerhome {
-        padding: 1.5rem 1rem !important;
-    }
-
-    .form-containerhome p, .form-container p {
-        max-width: 100% !important;
-    }
-
-    /* 5. Navbar y Footer */
-    .navbar {
-        flex-direction: column !important;
-        padding: 10px !important;
-    }
-    
-    .nav-links {
-        gap: 15px !important;
-        padding: 10px 0 !important;
-    }
-
-    .footer-content {
-        grid-template-columns: 1fr !important;
-        gap: 20px !important;
-    }
+    /* Footer y Navbar */
+    .footer-content { grid-template-columns: 1fr !important; }
+    .navbar { flex-direction: column !important; }
 }
