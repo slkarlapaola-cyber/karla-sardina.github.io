@@ -82,12 +82,8 @@ background-attachment:fixed; animation: movimiento 15s infinite alternate;/* Evi
     text-align: center;
 }
 
-/* --- SOLUCIÓN DE ALTA PRIORIDAD PARA IMSS --- */
-
-/* --- LIMPIEZA TOTAL PARA MÓVIL (IMSS) --- */
 
 @media screen and (max-width: 820px) {
-    /* Corregimos el fondo para que cubra todo el alto en Citas e Index */
     html, body {
         height: auto !important;
         min-height: 100vh !important;
@@ -102,7 +98,6 @@ background-attachment:fixed; animation: movimiento 15s infinite alternate;/* Evi
         flex-direction: column !important;
     }
 
-    /* Forzamos al contenido principal a ser un bloque simple */
     .main-content {
         display: block !important;
         width: 100% !important;
@@ -110,28 +105,25 @@ background-attachment:fixed; animation: movimiento 15s infinite alternate;/* Evi
         height: auto !important;
     }
 
-    /* ELIMINAMOS EL ABSOLUTE Y LOS 700PX DEL INDEX */
     .container.home-container, 
     .container {
-        position: relative !important; /* Esto lo baja al flujo normal */
+        position: relative !important; 
         top: 0 !important;
         right: 0 !important;
         left: 0 !important;
         transform: none !important;
-        width: 100% !important; /* Ya no mide 700px */
+        width: 100% !important; 
         max-width: 100% !important;
         height: auto !important;
         margin: 10px auto !important;
         display: block !important;
     }
 
-    /* Una sola columna para el formulario de citas */
     .form-grid {
         grid-template-columns: 1fr !important;
         gap: 15px !important;
     }
 
-    /* Navbar y Footer apilados */
     .navbar {
         flex-direction: column !important;
         height: auto !important;
@@ -151,7 +143,6 @@ background-attachment:fixed; animation: movimiento 15s infinite alternate;/* Evi
         gap: 20px !important;
     }
 
-    /* Botones grandes para el dedo */
     .buttons {
         flex-direction: column !important;
     }
