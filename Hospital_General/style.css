@@ -260,9 +260,21 @@ body::before{
 
 /* --- MEDIA QUERIES CORRECTIVAS --- */
 
-@media (max-width: 820px) {
-    /* 1. Forzar que el contenedor deje de flotar y use el ancho de la pantalla */
-    .home-container {
+@media screen and (max-width: 820px) {
+    /* 1. Forzamos al cuerpo y contenido a no tener desbordamiento horizontal */
+    body.home, .main-content {
+        overflow-x: hidden !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: flex-start !important;
+        align-items: center !important;
+        height: auto !important;
+        min-height: 100vh !important;
+        padding: 10px !important;
+    }
+
+    /* 2. RE-POSICIONAMIENTO DEL CONTENEDOR (Quitamos el absoluto) */
+    .container.home-container {
         position: relative !important;
         top: 0 !important;
         right: 0 !important;
@@ -270,57 +282,45 @@ body::before{
         width: 100% !important;
         max-width: 100% !important;
         height: auto !important;
-        margin: 20px 0 !important;
+        margin: 80px 0 20px 0 !important; /* Espacio para el navbar y margen inferior */
+        display: block !important;
     }
 
-    /* 2. El aviso ahora fluye debajo del contenedor sin empujar la pantalla */
-    .aviso-home {
-        position: static !important; /* CAMBIO CLAVE: deja de ser absoluto */
+    /* 3. EL AVISO (Eliminamos el error del lado derecho) */
+    p.aviso-home {
+        position: relative !important; /* Cambiado de absolute a relative */
+        top: 0 !important;
+        right: 0 !important;
+        left: 0 !important;
         width: 100% !important;
+        margin: 10px 0 40px 0 !important; /* Margen superior e inferior */
         text-align: center !important;
-        margin-top: 25px !important; /* Espacio visual entre el cuadro y el texto */
-        padding-bottom: 20px;
-        right: auto !important;
-        left: auto !important;
+        display: block !important;
+        opacity: 1 !important;
     }
 
-    /* 3. El contenido principal apila el container y el aviso */
-    .main-content {
-        display: flex !important; 
-        flex-direction: column !important; /* Apila los elementos en vertical */
-        align-items: center !important;
+    /* 4. Ajustes de estructura interna */
+    .form-container, .form-containerhome {
+        padding: 1.5rem 1rem !important;
+    }
+
+    .form-containerhome p, .form-container p {
+        max-width: 100% !important;
+    }
+
+    /* 5. Navbar y Footer */
+    .navbar {
+        flex-direction: column !important;
         padding: 10px !important;
-        height: auto !important;
+    }
+    
+    .nav-links {
+        gap: 15px !important;
+        padding: 10px 0 !important;
     }
 
-    /* 4. Formulario en una sola columna */
-    .form-grid {
-        grid-template-columns: 1fr !important;
-        gap: 1rem !important;
-    }
-
-    /* 5. Footer responsivo */
     .footer-content {
         grid-template-columns: 1fr !important;
-        text-align: center;
-        gap: 20px;
-    }
-
-    /* 6. Navbar: Evitar que los elementos se amontonen */
-    .navbar {
-        flex-direction: column;
-        height: auto;
-        padding: 15px;
-    }
-
-    .nav-links {
-        padding-top: 10px;
-        gap: 15px;
-    }
-
-    /* 7. Ajuste de imágenes de logo */
-    .logo-formulario img {
-        width: 90% !important;
-        height: auto;
+        gap: 20px !important;
     }
 }
