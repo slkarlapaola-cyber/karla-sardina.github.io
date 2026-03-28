@@ -273,21 +273,24 @@ body::before{
         margin: 20px 0 !important;
     }
 
-    /* 2. Ajustar el aviso que también estaba absoluto */
+    /* 2. El aviso ahora fluye debajo del contenedor sin empujar la pantalla */
     .aviso-home {
-        position: relative !important;
-        top: 0 !important;
-        right: 0 !important;
+        position: static !important; /* CAMBIO CLAVE: deja de ser absoluto */
         width: 100% !important;
         text-align: center !important;
-        margin-top: 10px !important;
+        margin-top: 25px !important; /* Espacio visual entre el cuadro y el texto */
         padding-bottom: 20px;
+        right: auto !important;
+        left: auto !important;
     }
 
-    /* 3. El contenido principal debe permitir scroll vertical */
+    /* 3. El contenido principal apila el container y el aviso */
     .main-content {
-        display: block !important; /* Cambiamos de flex a block para evitar estiramientos raros */
+        display: flex !important; 
+        flex-direction: column !important; /* Apila los elementos en vertical */
+        align-items: center !important;
         padding: 10px !important;
+        height: auto !important;
     }
 
     /* 4. Formulario en una sola columna */
