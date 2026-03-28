@@ -257,3 +257,81 @@ body::before{
   gap: 8px;
   font-size: 14px;
 }
+
+@media (max-width: 1024px) {
+    .home-container, .aviso-home {
+        width: 90%;
+        right: 5%;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        padding: 1rem;
+        gap: 1rem;
+    }
+
+    /* Hero/Home: Quitar el posicionamiento absoluto (para que fluya hacia abajo) */
+    .home-container {
+        position: relative;
+        top: 0;
+        right: 0;
+        transform: none;
+        width: 100%;
+        height: auto;
+        margin-top: 20px;
+    }
+
+    .aviso-home {
+        position: relative;
+        top: 0;
+        right: 0;
+        width: 100%;
+        margin-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+    
+    .form-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.2rem;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        text-align: center;
+    }
+
+    .buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    button {
+        width: 100%;
+    }
+
+    .logo-formulario img {
+        width: 80%;
+    }
+}
+
+/* Ajustes para móviles pequeños (320px - 480px) */
+@media (max-width: 480px) {
+    .form-container {
+        padding: 1rem;
+    }
+
+    .header {
+        padding: 1rem;
+    }
+
+    .nav-links {
+        gap: 1rem;
+    }
+}
