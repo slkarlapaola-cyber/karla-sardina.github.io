@@ -1,0 +1,59 @@
+*{margin:0;padding:0;box-sizing:border-box;} /* Reset general: elimina márgenes y paddings por defecto */
+
+body{min-height:100vh;font-family:system-ui,sans-serif; /* Altura total y fuente del sistema */
+display:flex;flex-direction:column;} /* Centrado y separación interna */
+.main-content{flex:1;display:flex;justify-content: center;align-items: center; padding: 20px;}
+
+.container{width:100%;max-width:780px;background:rgba(255,255,255,0); /* Caja principal transparente */
+backdrop-filter:blur(6px);border-radius:20px;border:1px solid white; /* Efecto cristal y bordes */
+box-shadow:0 12px 40px rgba(0,0,0,.28);overflow:hidden;} /* Sombra y ocultar exceso */
+
+.header{color:rgb(0, 0, 0);padding:2rem;text-align:center; background:#FFD77A; backdrop-filter: blur(12px);} /* Cabecera del formulario, el 38 es el nivel de transparencia */
+h1{font-size:2.1rem;margin-bottom:.3rem;} /* Tamaño del título */
+.subtitulo{opacity:.9;font-size:1.05rem;} /* Texto secundario */
+
+.form-container{padding:2rem 2.2rem;} /* Espaciado interno del formulario */
+
+.form-grid{display:grid;grid-template-columns:1fr;gap:1.4rem;} /* Grid base en una columna */
+@media(min-width:640px){.form-grid{grid-template-columns:1fr 1fr}.full-width{grid-column:1/-1}} /* Responsive en pantallas grandes */
+.form-group{position:relative;} /* Posición para labels flotantes */
+
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:.95rem 1.1rem; /* Tamaño y espacio */
+border:1px solid rgba(0,0,0,.12);border-radius:10px;font-size:.98rem; /* Bordes redondeados */
+background:rgba(255,255,255,.75);transition:all .25s ease;} /* Fondo y animaciones */
+
+.form-group label{position:absolute;left:1.1rem;top:.9rem;color:#5b728a; /* Posición inicial */
+pointer-events:none;font-size:.92rem;transition:all .3s ease;} /* Animación y tamaño */
+
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none; /* Quita borde azul */
+border-color:#003087;background:white;box-shadow:0 0 0 3px rgba(0,48,135,.12);} /* Resalte al enfocar */
+
+.form-group input:focus+label,.form-group input:not(:placeholder-shown)+label, /* Movimiento al escribir */
+.form-group select:focus+label,.form-group select:valid+label, /* Focus */
+.form-group textarea:focus+label,
+.form-group textarea:not(:placeholder-shown)+label{top:-.55rem;left:.9rem;font-size:.74rem; /* Label flotante */
+color:#003087;background:rgba(255,255,255,.92);padding:0 .35rem;} /* Fondo y color */
+
+.form-group textarea{min-height:100px;resize:vertical;} /* Altura mínima y ajuste manual */
+
+.error{color:#c53030;font-size:.78rem;margin-top:.35rem;display:block;min-height:1.2em;} /* Mensajes de error */
+
+.buttons{display:flex;gap:1rem;justify-content:center;margin-top:2rem;padding-bottom:1.5rem;} /* Contenedor botones */
+button{padding:.85rem 2rem;border:none;border-radius:10px;font-size:1rem;font-weight:600; /* Estilo base */
+cursor:pointer;transition:all .25s ease;} /* Animación hover */
+.btn-enviar{background:#FFD77A;color:rgb(0, 0, 0);} /* Botón enviar */
+.btn-limpiar{background:#e2e8f0;color:#1e293b;} /* Botón limpiar */
+
+body{ /* Cuerpo del documento */
+background:linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.62)),url('perfumera.jpg') center/cover no-repeat fixed; /* Imagen local con degradado */
+background-attachment:fixed; /* Evita que se repita al hacer scroll */
+
+.navbar{width:100%;background:rgba(255,215,122,.85);padding:1rem;backdrop-filter:blur(12px);display:flex;align-items:center;justify-content:space-between;} /* Barra */
+.nav-links{display:flex;gap:2rem;list-style:none;margin:0 auto;} /* Links */
+.nav-links a{text-decoration:none;color:black;font-weight:600;} /* Texto */
+
+.footer{background:rgba(255,215,122,.85);text-align:center;padding:1rem;font-size:.9rem;} /* Base */
+
+.logo{display:flex;font-weight:600;color:black;} /* Logo en la barra */
+
+}
