@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perfumera - Muestras</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">Perfumera</div>
+    <ul class="nav-links">
+      <li><a href="#">Inicio</a></li>
+      <li><a href="#">Fragancias</a></li>
+      <li><a href="#">Muestras</a></li>
+      <li><a href="#">Contacto</a></li>
+    </ul>
+  </nav>
+  <main class="main-content">
+    <div class="container">
+    <div class="header">
+      <h1>Solicitar muestra</h1>
+      <p class="subtitulo">Prueba tu perfume favorito</p>
+    </div>
+    <div class="form-container">
+      <div class="form-container">
+        <form id="serviceForm" novalidate class="form-container">
+          <div class="form-grid">
+            <div class="form-group"><input type="text" placeholder=" " required><label>Nombre</label></div>
+            <div class="form-group"><input type="text" placeholder=" " required><label>Apellido</label></div>
+            <div class="form-group"><select required><option value=""></option><option value="femenino">Femenino</option><option value="masculino">Masculino</option><option value="otro">Prefiero no decir</option></select><label>Género</label></div>
+            <div class="form-group"><input type="email" placeholder=" " required><label>Email</label></div>
+            <div class="form-group"><input type="tel" placeholder=" " required pattern="[0-9]{10}"><label>Télefono</label></div>
+            <div class="form-group"><input type="text" placeholder=" " required><label>Calle y Número</label></div>
+            <div class="form-group"><input type="text" placeholder=" " required><label>Colonia</label></div>
+            <div class="form-group"><input type="text" placeholder=" " required><label>Municipio</label></div>
+            <div class="form-group"><select required><option value=""></option><option value="gto">Guanajuato</option><option value="mexico">México</option><option value="zacatecas">Zacatecas</option><option value="durango">Durango</option><option value="Oaxaca">Oaxaca</option></select><label>Estado</label></div>
+            <div class="form-group"><input type="text" placeholder=" " required pattern="[0-9]{5}"><label>Código Postal</label></div>
+            <div class="form-group"><select required><option value="" required></option><option value="amaderada">Amaderada</option><option value="floral">Floral</option><option value="citrica">Cítrica</option><option value="dulce">Dulce</option><option value="fresca">Fresca</option></select><label>Tipo de fragancia</label></div>
+            <div class="form-group"><select required><option value=""></option><option value="dama">Dama</option><option value="caballero">Caballero</option><option value="unisex">Unisex</option></select><label>Categoría</label></div>
+             <div class="form-group"><select required><option value="" required></option><option value="amaderada">Amaderada</option><option value="dia">Día</option><option value="noche">Noche</option><option value="evento">Evento especial</option><option value="oficina">Oficina</option></select><label>Uso</label></div>
+             <div class="form-group"><select required><option value=""></option><option value="channel">Channel</option><option value="dior">Dior</option><option value="yves">Yves Saint Laurent</option><option value="versace">Versace</option><option value="carolina">Carolina Herera</option></select><label>Marca favorita</label></div>
+            <div class="form-group full-width"><textarea placeholder=" "></textarea><label>Comentarios adicionales</label></div>
+          </div>
+          <div class="buttons">
+            <button type="submit" class="btn-enviar">Solicitar</button>
+            <button type="reset" class="btn-limpiar">Limpiar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  </main>
+  <footer class="footer">
+    <p>&copy; 2026 Perfumera. Todos los derechos reservados.</p>
+    <p>Envíos a toda la República Mexicana</p>
+  </footer>
+</body>
+</html>
