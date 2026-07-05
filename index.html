@@ -1,258 +1,1186 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Karla | Portafolio Desarrollador Web</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-color: #f9f7f2; /* Tono papel de revista */
-            --text-primary: #1a1a1a;
-            --accent: #8b7e66; /* Dorado apagado/editorial */
-            --serif: 'Playfair Display', serif;
-            --sans: 'Inter', sans-serif;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Karla Sardina — Marketing Digital & Frontend Developer</title>
+<meta name="description" content="Portafolio de Karla Sardina. Marketing digital, diseño UI/UX y desarrollo frontend con WordPress, Elementor y código propio.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,900;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   KARLA SARDINA — PORTAFOLIO
+   Sistema editorial: revista + estudio creativo
+   ============================================================ */
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+:root{
+  /* Paleta */
+  --paper:      #FCFBF8;
+  --paper-2:    #F4F1EA;
+  --ink:        #16181A;
+  --ink-soft:   #4A4D4F;
+  --slate:      #475A5F;   /* azul grisáceo profundo — acento principal */
+  --powder:     #C8D6D9;   /* azul grisáceo claro */
+  --olive:      #80816D;   /* taupe verdoso — uso mínimo, no protagonista */
+  --cream:      #EFE8D8;   /* ivory cálido — sin dominante verde */
+  --line:       rgba(22,24,26,0.12);
 
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-primary);
-            font-family: var(--sans);
-            line-height: 1.6;
-            padding: 0 4%;
-        }
+  --serif: 'Playfair Display', serif;
+  --sans:  'Inter', sans-serif;
 
-        /* --- NAVBAR --- */
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 30px 0;
-            border-bottom: 1px solid #000;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-weight: bold;
-        }
+  --container: 1240px;
+  --pad: clamp(24px, 5vw, 72px);
+}
 
-        .logo-left { font-size: 1.2rem; }
-        .logo-right { 
-            font-family: var(--serif);
-            font-size: 2rem;
-            border: 1px solid #000;
-            padding: 0 10px;
-        }
+*{ margin:0; padding:0; box-sizing:border-box; }
 
-        /* --- HERO --- */
-        .hero {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            align-items: end;
-            padding: 60px 0;
-            gap: 40px;
-            border-bottom: 1px solid #000;
-        }
+html{ scroll-behavior:smooth; }
 
-        .hero img {
-            width: 100%;
-            height: 425px;
-            object-fit: cover;
-            filter: grayscale(100%);
-            transition: filter 0.5s ease;
-        }
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-weight:400;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  position:relative;
+  overflow-x:hidden;
+}
 
-        .hero img:hover { filter: grayscale(0%); }
+/* --- Textura de fondo: ruido sutil + manchas editoriales --- */
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  opacity:0.05;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
 
-        .hero h1 {
-            font-family: var(--serif);
-            font-size: clamp(4rem, 10vw, 8rem);
-            line-height: 0.8;
-            text-transform: uppercase;
-            margin-bottom: -10px;
-        }
+body::after{
+  content:'';
+  position:fixed;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  /* Fondo casi sólido: un único velo cálido muy tenue, tipo papel de revista,
+     sin mezcla de colores — mantiene la sensación editorial sin distraer. */
+  background:
+    radial-gradient(ellipse 1400px 900px at 50% 0%, rgba(200,214,217,0.30), transparent 70%);
+}
 
-        /* --- SOBRE MÍ --- */
-        .sobre-mi {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            padding: 80px 0;
-            gap: 40px;
-        }
+.wrap{ position:relative; z-index:1; }
 
-        .sobre-mi h2 {
-            font-family: var(--serif);
-            font-size: 3rem;
-            text-transform: uppercase;
-            font-style: italic;
-        }
+section{ padding: 0 var(--pad); }
 
-        .sobre-mi p {
-            font-size: 1.2rem;
-            max-width: 500px;
-            align-self: center;
-            text-align: justify;
-        }
+.container{ max-width:var(--container); margin:0 auto; }
 
-        /* --- PROYECTOS --- */
-        .proyectos {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2px; /* Espacio mínimo para simular líneas de revista */
-            background-color: #000; /* Color de las líneas divisorias */
-            border: 1px solid #000;
-            margin-bottom: 100px;
-        }
+a{ color:inherit; text-decoration:none; }
+img{ display:block; max-width:100%; }
 
-        .card {
-            background-color: var(--bg-color);
-            padding: 40px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            min-height: 400px;
-            transition: background-color 0.3s ease;
-        }
+::selection{ background:var(--slate); color:var(--paper); }
 
-        .card:hover { background-color: #fff; }
+:focus-visible{
+  outline:2px solid var(--slate);
+  outline-offset:3px;
+}
 
-        .card h3 {
-            font-family: var(--serif);
-            font-size: 2rem;
-            text-transform: uppercase;
-            margin-bottom: 15px;
-            line-height: 1.1;
-        }
+@media (prefers-reduced-motion: reduce){
+  *{ animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important; }
+}
 
-        .card p {
-            font-size: 0.9rem;
-            color: #555;
-            margin-bottom: 30px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+/* Eyebrow / label editorial */
+.eyebrow{
+  font-family:var(--sans);
+  font-size:0.72rem;
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+  color:var(--slate);
+  font-weight:600;
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.eyebrow::before{
+  content:'';
+  width:28px; height:1px;
+  background:var(--slate);
+  display:inline-block;
+}
 
-        .card a {
-            text-decoration: none;
-            color: var(--text-primary);
-            font-weight: bold;
-            text-transform: uppercase;
-            font-size: 0.8rem;
-            border-bottom: 1px solid var(--text-primary);
-            width: fit-content;
-            padding-bottom: 5px;
-            transition: color 0.3s;
-        }
+/* ============================================================
+   NAVBAR
+   ============================================================ */
+.navbar{
+  position:fixed;
+  top:20px; left:50%;
+  transform:translateX(-50%);
+  width:min(94%, 1080px);
+  z-index:100;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:16px 28px;
+  background:rgba(252,251,248,0.65);
+  backdrop-filter:blur(14px) saturate(140%);
+  -webkit-backdrop-filter:blur(14px) saturate(140%);
+  border:1px solid rgba(22,24,26,0.08);
+  border-radius:100px;
+  box-shadow:0 8px 30px rgba(22,24,26,0.06);
+  transition:box-shadow 0.4s ease, background 0.4s ease;
+}
+.nav-logo{
+  font-family:var(--serif);
+  font-size:1.15rem;
+  font-weight:600;
+  letter-spacing:0.01em;
+}
+.nav-logo span{ color:var(--slate); font-style:italic; }
+.nav-links{
+  display:flex;
+  gap:34px;
+  list-style:none;
+}
+.nav-links a{
+  font-size:0.78rem;
+  letter-spacing:0.06em;
+  text-transform:uppercase;
+  font-weight:500;
+  color:var(--ink-soft);
+  position:relative;
+  padding-bottom:3px;
+}
+.nav-links a::after{
+  content:'';
+  position:absolute; left:0; bottom:0;
+  width:0; height:1px;
+  background:var(--ink);
+  transition:width 0.3s ease;
+}
+.nav-links a:hover{ color:var(--ink); }
+.nav-links a:hover::after{ width:100%; }
 
-        .card a:hover {
-            color: var(--accent);
-            border-color: var(--accent);
-        }
+.nav-cta{
+  font-size:0.72rem;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  font-weight:600;
+  padding:9px 20px;
+  border:1px solid var(--ink);
+  border-radius:100px;
+  transition:background 0.3s ease, color 0.3s ease;
+}
+.nav-cta:hover{ background:var(--ink); color:var(--paper); }
 
-        /* Ajuste para que el primer proyecto sea más grande*/
-        .card:first-child {
-            grid-column: span 2;
-        }
+.nav-toggle{ display:none; }
 
-        @media (max-width: 768px) {
-            .hero, .sobre-mi { grid-template-columns: 1fr; }
-            .card:first-child { grid-column: span 1; }
-            .hero h1 { font-size: 4rem; }
-        }
-    </style>
+@media (max-width:860px){
+  .nav-links{ display:none; }
+  .nav-toggle{
+    display:flex; flex-direction:column; gap:5px;
+    background:none; border:none; cursor:pointer; padding:6px;
+  }
+  .nav-toggle span{ width:22px; height:2px; background:var(--ink); display:block; }
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{
+  min-height:100svh;
+  display:grid;
+  grid-template-columns:1.05fr 0.95fr;
+  align-items:center;
+  gap:40px;
+  padding-top:140px;
+  padding-bottom:60px;
+}
+.hero-text .eyebrow{ margin-bottom:28px; }
+
+.hero-title{
+  font-family:var(--serif);
+  font-weight:700;
+  font-size:clamp(2.8rem, 6.4vw, 5.6rem);
+  line-height:0.98;
+  letter-spacing:-0.01em;
+  margin-bottom:26px;
+}
+.hero-title em{
+  font-style:italic;
+  font-weight:500;
+  color:var(--slate);
+}
+.hero-sub{
+  max-width:460px;
+  font-size:1.05rem;
+  color:var(--ink-soft);
+  margin-bottom:36px;
+}
+.hero-meta{
+  display:flex;
+  gap:40px;
+  flex-wrap:wrap;
+}
+.hero-meta div{ font-size:0.8rem; color:var(--ink-soft); }
+.hero-meta strong{
+  display:block;
+  font-family:var(--serif);
+  font-size:1.4rem;
+  color:var(--ink);
+  font-weight:600;
+}
+
+/* --- Marco Polaroid con clip metálico (100% CSS) --- */
+.photo-stage{
+  display:flex;
+  justify-content:center;
+  position:relative;
+}
+.polaroid{
+  position:relative;
+  background:var(--paper);
+  padding:18px 18px 60px 18px;
+  box-shadow:
+    0 2px 4px rgba(22,24,26,0.06),
+    0 24px 48px rgba(22,24,26,0.14);
+  transform:rotate(2.4deg);
+  transition:transform 0.6s cubic-bezier(.2,.8,.2,1);
+  width:min(360px, 84vw);
+}
+.photo-stage:hover .polaroid{ transform:rotate(0.6deg) translateY(-4px); }
+
+.polaroid .frame-photo{
+  position:relative;
+  overflow:hidden;
+  aspect-ratio:4/5;
+  background:var(--cream);
+}
+.polaroid .frame-photo img{
+  width:100%; height:100%;
+  object-fit:cover;
+  filter:grayscale(100%) contrast(1.02);
+  transition:filter 1.1s ease;
+}
+.photo-stage:hover .frame-photo img{ filter:grayscale(0%) contrast(1.02); }
+
+.polaroid-caption{
+  position:absolute;
+  bottom:20px; left:18px; right:18px;
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:0.95rem;
+  color:var(--ink-soft);
+  text-align:center;
+}
+
+/* Clip metálico — construido con dos aros CSS, lado izquierdo */
+.paperclip{
+  position:absolute;
+  top:-34px;
+  left:26px;
+  width:44px;
+  height:96px;
+  transform:rotate(-9deg);
+  z-index:5;
+  filter:drop-shadow(0 6px 8px rgba(22,24,26,0.25));
+}
+.paperclip::before,
+.paperclip::after{
+  content:'';
+  position:absolute;
+  border-radius:22px;
+  border:5px solid;
+  border-color:#d8d9d6 #b9bab6 #9a9b97 #d8d9d6;
+  background:transparent;
+}
+.paperclip::before{ width:30px; height:80px; top:0; left:8px; }
+.paperclip::after{ width:18px; height:56px; top:16px; left:14px; border-width:4.5px; }
+
+/* ============================================================
+   WHAT I DO
+   ============================================================ */
+.services{ padding-top:140px; padding-bottom:120px; }
+.section-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  gap:24px;
+  margin-bottom:64px;
+  border-bottom:1px solid var(--line);
+  padding-bottom:28px;
+}
+.section-head h2{
+  font-family:var(--serif);
+  font-weight:600;
+  font-size:clamp(2rem, 4vw, 3rem);
+  line-height:1.05;
+}
+.section-head h2 em{ font-style:italic; color:var(--slate); }
+.section-head p{
+  max-width:340px;
+  font-size:0.92rem;
+  color:var(--ink-soft);
+}
+
+.services-grid{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:0;
+  border-top:1px solid var(--line);
+}
+.service-card{
+  padding:44px 32px;
+  border-bottom:1px solid var(--line);
+  border-right:1px solid var(--line);
+  transition:background 0.35s ease;
+}
+.service-card:last-child{ border-right:none; }
+.service-card .num{
+  font-family:var(--serif);
+  font-style:italic;
+  color:var(--powder);
+  font-size:0.95rem;
+  margin-bottom:22px;
+}
+.service-card h3{
+  font-family:var(--serif);
+  font-weight:600;
+  font-size:1.35rem;
+  margin-bottom:14px;
+}
+.service-card p{ font-size:0.9rem; color:var(--ink-soft); }
+.service-card:hover{ background:rgba(200,214,217,0.14); }
+
+@media (max-width:860px){
+  .services-grid{ grid-template-columns:1fr; }
+  .service-card{ border-right:none; }
+}
+
+/* ============================================================
+   SOBRE MÍ
+   ============================================================ */
+.about{
+  padding-top:100px;
+  padding-bottom:120px;
+}
+.about-grid{
+  display:grid;
+  grid-template-columns:0.9fr 1.1fr;
+  gap:60px;
+  align-items:start;
+}
+.about-lead{
+  font-family:var(--serif);
+  font-size:clamp(1.5rem, 2.6vw, 2.1rem);
+  font-weight:500;
+  line-height:1.35;
+  color:var(--ink);
+}
+.about-lead::first-letter{
+  font-size:3.2em;
+  font-weight:700;
+  float:left;
+  line-height:0.8;
+  padding-right:10px;
+  margin-top:6px;
+  color:var(--slate);
+}
+.about-lead em{ font-style:italic; color:var(--slate); }
+
+.about-checklist{ margin-top:40px; display:flex; flex-direction:column; gap:0; }
+.check-item{
+  display:flex;
+  align-items:flex-start;
+  gap:16px;
+  padding:20px 0;
+  border-top:1px solid var(--line);
+  font-size:0.95rem;
+}
+.check-item:last-child{ border-bottom:1px solid var(--line); }
+.check-item .mark{
+  flex-shrink:0;
+  width:22px; height:22px;
+  border-radius:50%;
+  background:var(--slate);
+  color:var(--paper);
+  display:flex; align-items:center; justify-content:center;
+  font-size:0.7rem;
+  margin-top:2px;
+}
+
+.about-side{
+  background:var(--cream);
+  padding:40px 32px;
+  position:relative;
+}
+.about-side h4{
+  font-family:var(--serif);
+  font-weight:600;
+  font-size:1.2rem;
+  margin-bottom:22px;
+}
+.timeline{ display:flex; flex-direction:column; gap:26px; }
+.timeline-item{ display:grid; grid-template-columns:70px 1fr; gap:16px; }
+.timeline-item .year{
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:0.85rem;
+  color:var(--slate);
+}
+.timeline-item .role{ font-weight:600; font-size:0.92rem; }
+.timeline-item .org{ font-size:0.8rem; color:var(--ink-soft); }
+
+@media (max-width:900px){
+  .about-grid{ grid-template-columns:1fr; }
+}
+
+/* ============================================================
+   LOGRO — YOUTUBE
+   ============================================================ */
+.achievement{
+  padding-top:100px;
+  padding-bottom:120px;
+}
+.achievement-box{
+  background:var(--ink);
+  color:var(--paper);
+  padding:64px var(--pad);
+  margin:0 calc(-1 * var(--pad));
+  display:grid;
+  grid-template-columns:1fr 1.3fr;
+  gap:48px;
+  align-items:center;
+  position:relative;
+  overflow:hidden;
+}
+.achievement-box::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:radial-gradient(ellipse 600px 500px at 90% 20%, rgba(200,214,217,0.14), transparent 65%);
+  pointer-events:none;
+}
+.achievement-box h3{
+  font-family:var(--serif);
+  font-weight:600;
+  font-size:clamp(1.6rem, 3vw, 2.2rem);
+  line-height:1.2;
+  position:relative;
+}
+.achievement-box h3 em{ font-style:italic; color:var(--powder); }
+.achievement-box .channel-name{
+  display:inline-block;
+  margin-top:14px;
+  font-size:0.78rem;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:rgba(252,251,248,0.6);
+}
+.stat-grid{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:28px;
+  position:relative;
+}
+.stat{ border-left:1px solid rgba(252,251,248,0.2); padding-left:18px; }
+.stat .stat-num{
+  font-family:var(--serif);
+  font-size:clamp(1.6rem, 2.6vw, 2.1rem);
+  font-weight:600;
+  color:var(--powder);
+}
+.stat .stat-label{
+  font-size:0.72rem;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  color:rgba(252,251,248,0.65);
+  margin-top:4px;
+}
+
+@media (max-width:860px){
+  .achievement-box{ grid-template-columns:1fr; }
+  .stat-grid{ grid-template-columns:repeat(2,1fr); }
+}
+
+/* ============================================================
+   PROYECTOS
+   ============================================================ */
+.projects{ padding-top:100px; padding-bottom:60px; }
+
+.projects-grid{
+  border-top:1px solid var(--line);
+}
+.project-row{
+  display:grid;
+  grid-template-columns:100px 1fr auto auto;
+  align-items:center;
+  gap:24px;
+  padding:30px 4px;
+  border-bottom:1px solid var(--line);
+  cursor:pointer;
+  transition:background 0.3s ease, padding-left 0.3s ease;
+  background:none;
+  border-left:0 solid var(--slate);
+  border-right:none; border-top:none;
+  text-align:left;
+  width:100%;
+  font-family:var(--sans);
+}
+.project-row:hover{
+  background:rgba(200,214,217,0.14);
+  padding-left:20px;
+  border-left-width:4px;
+}
+.project-row .p-year{
+  font-family:var(--serif);
+  font-style:italic;
+  color:var(--ink-soft);
+  font-size:0.95rem;
+}
+.project-row .p-name-wrap h3{
+  font-family:var(--serif);
+  font-weight:600;
+  font-size:1.5rem;
+  margin-bottom:4px;
+}
+.project-row .p-name-wrap p{
+  font-size:0.84rem;
+  color:var(--ink-soft);
+  max-width:520px;
+}
+.project-row .p-cat{
+  font-size:0.72rem;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  color:var(--slate);
+  white-space:nowrap;
+}
+.project-row .p-arrow{
+  width:38px; height:38px;
+  border-radius:50%;
+  border:1px solid var(--ink);
+  display:flex; align-items:center; justify-content:center;
+  transition:background 0.3s ease, transform 0.3s ease;
+  flex-shrink:0;
+}
+.project-row:hover .p-arrow{ background:var(--ink); color:var(--paper); transform:rotate(45deg); }
+
+@media (max-width:760px){
+  .project-row{ grid-template-columns:1fr auto; }
+  .project-row .p-year, .project-row .p-cat{ display:none; }
+}
+
+/* ============================================================
+   SKILLS
+   ============================================================ */
+.skills{ padding-top:100px; padding-bottom:120px; }
+.skills-cloud{
+  display:flex; flex-wrap:wrap; gap:14px;
+  margin-top:20px;
+}
+.skill-pill{
+  padding:10px 20px;
+  border:1px solid var(--line);
+  border-radius:100px;
+  font-size:0.82rem;
+  color:var(--ink-soft);
+  transition:border-color 0.3s ease, color 0.3s ease, background 0.3s ease;
+}
+.skill-pill:hover{
+  border-color:var(--slate);
+  color:var(--ink);
+  background:var(--cream);
+}
+
+/* ============================================================
+   CTA + FOOTER
+   ============================================================ */
+.cta{
+  padding-top:80px; padding-bottom:80px;
+  text-align:center;
+  border-top:1px solid var(--line);
+}
+.cta h2{
+  font-family:var(--serif);
+  font-weight:600;
+  font-size:clamp(2rem, 5vw, 3.4rem);
+  line-height:1.1;
+  max-width:800px;
+  margin:0 auto 32px;
+}
+.cta h2 em{ font-style:italic; color:var(--slate); }
+.cta-btn{
+  display:inline-block;
+  padding:16px 36px;
+  border:1px solid var(--ink);
+  border-radius:100px;
+  font-size:0.8rem;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  font-weight:600;
+  transition:background 0.3s ease, color 0.3s ease;
+}
+.cta-btn:hover{ background:var(--ink); color:var(--paper); }
+
+footer{
+  padding:50px var(--pad) 40px;
+  border-top:1px solid var(--line);
+}
+.footer-grid{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  flex-wrap:wrap;
+  gap:24px;
+}
+.footer-brand{
+  font-family:var(--serif);
+  font-size:1.3rem;
+  font-weight:600;
+}
+.footer-brand span{ font-style:italic; color:var(--slate); }
+.footer-links{
+  display:flex; gap:28px; flex-wrap:wrap;
+  list-style:none;
+}
+.footer-links a{
+  font-size:0.78rem;
+  letter-spacing:0.05em;
+  text-transform:uppercase;
+  color:var(--ink-soft);
+  border-bottom:1px solid transparent;
+  padding-bottom:2px;
+  transition:color 0.3s ease, border-color 0.3s ease;
+}
+.footer-links a:hover{ color:var(--ink); border-color:var(--ink); }
+.footer-note{
+  margin-top:36px;
+  font-family:var(--serif);
+  font-style:italic;
+  color:var(--ink-soft);
+  font-size:0.9rem;
+  border-top:1px solid var(--line);
+  padding-top:24px;
+}
+
+/* ============================================================
+   MODAL DE PROYECTO
+   ============================================================ */
+.modal-overlay{
+  position:fixed; inset:0;
+  background:rgba(22,24,26,0.55);
+  backdrop-filter:blur(6px);
+  z-index:200;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:24px;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity 0.35s ease;
+}
+.modal-overlay.active{ opacity:1; pointer-events:auto; }
+
+.modal{
+  background:var(--paper);
+  width:min(880px, 100%);
+  max-height:88vh;
+  overflow-y:auto;
+  position:relative;
+  padding:56px;
+  transform:translateY(24px) scale(0.98);
+  transition:transform 0.4s cubic-bezier(.2,.8,.2,1);
+  box-shadow:0 40px 80px rgba(0,0,0,0.3);
+}
+.modal-overlay.active .modal{ transform:translateY(0) scale(1); }
+
+.modal-close{
+  position:absolute; top:24px; right:24px;
+  width:38px; height:38px;
+  border-radius:50%;
+  border:1px solid var(--ink);
+  background:transparent;
+  display:flex; align-items:center; justify-content:center;
+  cursor:pointer;
+  font-size:1.1rem;
+  transition:background 0.3s ease, color 0.3s ease;
+}
+.modal-close:hover{ background:var(--ink); color:var(--paper); }
+
+.modal-eyebrow{ margin-bottom:20px; }
+.modal h2{
+  font-family:var(--serif);
+  font-weight:700;
+  font-size:clamp(1.8rem, 4vw, 2.6rem);
+  margin-bottom:6px;
+}
+.modal .modal-meta{
+  font-size:0.82rem;
+  color:var(--ink-soft);
+  margin-bottom:32px;
+}
+.modal-visual{
+  width:100%;
+  aspect-ratio:16/9;
+  background:linear-gradient(135deg, var(--cream), var(--powder));
+  margin-bottom:36px;
+  position:relative;
+  overflow:hidden;
+  display:flex; align-items:center; justify-content:center;
+}
+.modal-visual span{
+  font-family:var(--serif);
+  font-style:italic;
+  color:var(--ink-soft);
+  font-size:0.9rem;
+}
+.modal-body{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:32px;
+  margin-bottom:36px;
+}
+.modal-block h4{
+  font-size:0.72rem;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  color:var(--slate);
+  margin-bottom:10px;
+}
+.modal-block p{ font-size:0.92rem; color:var(--ink-soft); }
+.modal-tech{ display:flex; flex-wrap:wrap; gap:8px; margin-top:6px; }
+.modal-tech span{
+  font-size:0.72rem;
+  padding:5px 12px;
+  border:1px solid var(--line);
+  border-radius:100px;
+  color:var(--ink-soft);
+}
+.modal-visit{
+  display:inline-flex; align-items:center; gap:10px;
+  padding:14px 28px;
+  background:var(--ink);
+  color:var(--paper);
+  border-radius:100px;
+  font-size:0.78rem;
+  letter-spacing:0.06em;
+  text-transform:uppercase;
+  font-weight:600;
+  transition:background 0.3s ease;
+}
+.modal-visit:hover{ background:var(--slate); }
+
+@media (max-width:640px){
+  .modal{ padding:36px 24px; }
+  .modal-body{ grid-template-columns:1fr; }
+}
+
+/* ============================================================
+   SCROLL REVEAL
+   ============================================================ */
+.reveal{
+  opacity:0;
+  transform:translateY(28px);
+  transition:opacity 0.8s ease, transform 0.8s cubic-bezier(.2,.8,.2,1);
+}
+.reveal.in{ opacity:1; transform:translateY(0); }
+
+</style>
 </head>
 <body>
+<div class="wrap">
 
-  <div class="navbar">
-    <div class="logo-left">Karla</div>
-    <div class="logo-right">K</div>
-  </div>
+  <!-- ============================================================
+       NAVBAR
+  ============================================================ -->
+  <nav class="navbar">
+    <div class="nav-logo">Karla <span>Sardina</span></div>
+    <ul class="nav-links">
+      <li><a href="#sobre-mi">Sobre mí</a></li>
+      <li><a href="#experiencia">Experiencia</a></li>
+      <li><a href="#proyectos">Proyectos</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <a href="#contacto" class="nav-cta">Hablemos</a>
+  </nav>
 
-  <div class="hero">
-    <img src="fotokarla.png" alt="Karla - Web Developer">
-    <h1>Web<br>Dev</h1>
-  </div>
-
-  <div class="sobre-mi">
-    <h2>Sobre mí</h2>
-    <p>
-      Soy desarrolladora web en formación con enfoque en frontend.
-      Me interesa crear soluciones digitales funcionales y centradas en el usuario, 
-      fusionando la estética con la arquitectura de código.
-    </p>
-  </div>
-
-  <div style="border-top: 1px solid #000; padding: 20px 0;">
-      <h2 style="font-family: var(--serif); text-transform: uppercase;">Selected Works — 2026</h2>
-  </div>
-
-  <div class="proyectos">
-
-    <div class="card">
-      <div>
-        <h3>Último Trámite</h3>
-        <p>Sistema web para apoyo en trámites postmortem. Un enfoque humano a la tecnología.</p>
+  <!-- ============================================================
+       HERO
+  ============================================================ -->
+  <header class="hero container">
+    <div class="hero-text">
+      <p class="eyebrow">Marketing Digital &amp; Frontend Developer</p>
+      <h1 class="hero-title">Hola, soy<br><em>Karla</em> Sardina</h1>
+      <p class="hero-sub">
+        Convierto estrategia e ideas en experiencias digitales: diseño en Figma, desarrollo en WordPress
+        y Elementor, y una comunidad de más de 150,000 personas construida desde cero.
+      </p>
+      <div class="hero-meta">
+        <div><strong>150K+</strong>Comunidad gestionada</div>
+        <div><strong>6+</strong>Años de contenido &amp; SEO</div>
+        <div><strong>10</strong>Clientes simultáneos</div>
       </div>
-      <a href="https://ultimotramite.lovestoblog.com/vista/first.php" target="_blank">View Case Study</a>
     </div>
-    
-    <div class="card">
-      <div>
-        <h3>Hospital General</h3>
-        <p>Gestión de datos médicos con interfaz optimizada.</p>
+    <div class="photo-stage">
+      <div class="polaroid">
+        <span class="paperclip" aria-hidden="true"></span>
+        <div class="frame-photo">
+          <img src="fotokarla.png" alt="Retrato de Karla Sardina">
+        </div>
+        <p class="polaroid-caption">Guanajuato, MX</p>
       </div>
-      <a href="Hospital_General/" target="_blank">Explore Project</a>
     </div>
+  </header>
 
-    <div class="card">
-      <div>
-        <h3>IMSS</h3>
-        <p>Arquitectura de software para la gestión de pacientes a gran escala.</p>
+  <!-- ============================================================
+       WHAT I DO
+  ============================================================ -->
+  <section class="services container reveal" id="servicios">
+    <div class="section-head">
+      <h2>Un perfil,<br><em>tres disciplinas.</em></h2>
+      <p>Estrategia, diseño y código trabajando en conjunto — no por separado.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <p class="num">01</p>
+        <h3>Frontend Development</h3>
+        <p>Transformo interfaces de Figma en sitios funcionales con WordPress, Elementor, HTML, CSS y JavaScript.</p>
       </div>
-      <a href="IMSS/" target="_blank">Explore Project</a>
-    </div>
-
-    <div class="card">
-      <div>
-        <h3>Perfumera</h3>
-        <p>E-commerce experimental para solicitud de muestras.</p>
+      <div class="service-card">
+        <p class="num">02</p>
+        <h3>Diseño &amp; Estrategia</h3>
+        <p>Prototipado UI/UX, wireframing y planeación de contenido con visión de marca y resultados medibles.</p>
       </div>
-      <a href="Perfumera/" target="_blank">View Site</a>
-    </div>
-
-    <div class="card">
-      <div>
-        <h3>Insignias</h3>
-        <p>Exploración visual de iconos y SVG de superhéroes.</p>
+      <div class="service-card">
+        <p class="num">03</p>
+        <h3>Contenido &amp; Comunidad</h3>
+        <p>SEO, copywriting y gestión de comunidad — la misma disciplina con la que hago crecer un canal propio.</p>
       </div>
-      <a href="Insignias/" target="_blank">View Project</a>
     </div>
+  </section>
 
-    <div class="card">
+  <!-- ============================================================
+       SOBRE MÍ
+  ============================================================ -->
+  <section class="about container reveal" id="sobre-mi">
+    <div class="section-head">
+      <h2>Sobre <em>mí</em></h2>
+    </div>
+    <div class="about-grid">
       <div>
-        <h3>App Cursos</h3>
-        <p>Diseño y desarrollo de aplicación móvil académica.</p>
+        <p class="about-lead">
+          Diseño y desarrollo con la misma lógica: entender primero a quién le hablo,
+          <em>después</em> decidir cómo construirlo.
+        </p>
+        <div class="about-checklist">
+          <div class="check-item"><span class="mark">✓</span> Perfil híbrido entre marketing digital y desarrollo frontend</div>
+          <div class="check-item"><span class="mark">✓</span> +150,000 suscriptores gestionados de forma independiente en YouTube</div>
+          <div class="check-item"><span class="mark">✓</span> Coordinación simultánea de hasta 10 cuentas de cliente</div>
+          <div class="check-item"><span class="mark">✓</span> De Figma a código: WordPress, Elementor y desarrollo propio</div>
+        </div>
       </div>
-      <a href="https://drive.google.com/file/d/1vTiubDL7Ao1VwCYOZ09RYBj7iO4DvyG8/view?usp=sharing" target="_blank">Download APK</a>
+      <div class="about-side">
+        <h4>Trayectoria</h4>
+        <div class="timeline" id="experiencia">
+          <div class="timeline-item">
+            <span class="year">2026</span>
+            <div><p class="role">Frontend Developer</p><p class="org">Pgiovas — Remoto</p></div>
+          </div>
+          <div class="timeline-item">
+            <span class="year">2023</span>
+            <div><p class="role">Social Media Manager</p><p class="org">Molcajete Diseño MX — Querétaro</p></div>
+          </div>
+          <div class="timeline-item">
+            <span class="year">2020</span>
+            <div><p class="role">Creadora de Contenido</p><p class="org">Canal en YouTube — Guanajuato</p></div>
+          </div>
+          <div class="timeline-item">
+            <span class="year">2018</span>
+            <div><p class="role">Promotora de Salud</p><p class="org">Secretaría de Salud — Guanajuato</p></div>
+          </div>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <div class="card">
+  <!-- ============================================================
+       LOGRO — YOUTUBE
+  ============================================================ -->
+  <section class="achievement container reveal">
+    <div class="achievement-box">
       <div>
-        <h3>UI Design</h3>
-        <p>Prototipado en Figma con enfoque en experiencia de usuario.</p>
+        <h3>Seis años construyendo <em>una comunidad</em>, no solo un canal.</h3>
+        <span class="channel-name">Canal de YouTube · Educación en electricidad residencial</span>
       </div>
-      <a href="https://www.figma.com/design/PJYYQzQSC2rD4tmxic5BMW/Untitled?node-id=0-1&t=fwATtpE1CGTAnm8r-1" target="_blank">View Figma</a>
+      <div class="stat-grid">
+        <div class="stat"><p class="stat-num">150K+</p><p class="stat-label">Suscriptores</p></div>
+        <div class="stat"><p class="stat-num">6+</p><p class="stat-label">Años activos</p></div>
+        <div class="stat"><p class="stat-num">SEO</p><p class="stat-label">Estrategia</p></div>
+        <div class="stat"><p class="stat-num">Comunidad</p><p class="stat-label">Gestión activa</p></div>
+        <div class="stat"><p class="stat-num">Contenido</p><p class="stat-label">Producción propia</p></div>
+        <div class="stat"><p class="stat-num">Monetización</p><p class="stat-label">Activa y sostenida</p></div>
+      </div>
     </div>
+  </section>
 
-  </div>
+  <!-- ============================================================
+       PROYECTOS
+  ============================================================ -->
+  <section class="projects container reveal" id="proyectos">
+    <div class="section-head">
+      <h2>Selected <em>Works</em></h2>
+      <p>Clic en cada proyecto para ver el proceso completo.</p>
+    </div>
+    <div class="projects-grid" id="projectsGrid"><!-- generado por JS --></div>
+  </section>
 
-  <footer style="padding: 50px 0; text-align: center; border-top: 1px solid #000; font-family: var(--serif); font-style: italic;">
-      © 2026 Karla — Diseñando el futuro del código.
+  <!-- ============================================================
+       SKILLS
+  ============================================================ -->
+  <section class="skills container reveal">
+    <div class="section-head">
+      <h2>Herramientas &amp; <em>habilidades</em></h2>
+    </div>
+    <div class="skills-cloud">
+      <span class="skill-pill">HTML5</span>
+      <span class="skill-pill">CSS3</span>
+      <span class="skill-pill">JavaScript</span>
+      <span class="skill-pill">WordPress</span>
+      <span class="skill-pill">Elementor</span>
+      <span class="skill-pill">Figma</span>
+      <span class="skill-pill">GitHub</span>
+      <span class="skill-pill">Canva</span>
+      <span class="skill-pill">CapCut</span>
+      <span class="skill-pill">SEO On Page</span>
+      <span class="skill-pill">UI Design</span>
+      <span class="skill-pill">UX Research</span>
+      <span class="skill-pill">Marketing Digital</span>
+      <span class="skill-pill">Copywriting</span>
+      <span class="skill-pill">Community Management</span>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CTA
+  ============================================================ -->
+  <section class="cta container reveal" id="contacto">
+    <h2>¿Un proyecto en mente? <em>Construyámoslo juntas.</em></h2>
+    <a href="mailto:sl.karla.paola@gmail.com" class="cta-btn">Escríbeme</a>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">Karla <span>Sardina</span></div>
+      <ul class="footer-links">
+        <li><a href="mailto:sl.karla.paola@gmail.com">Correo</a></li>
+        <li><a href="tel:3324890435">332 489 0435</a></li>
+        <li><a href="https://github.com/slkarlapaola-cyber" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://slkarlapaola-cyber.github.io/karla-sardina.github.io/" target="_blank" rel="noopener">Portafolio</a></li>
+      </ul>
+    </div>
+    <p class="footer-note">© 2026 Karla Sardina — Estrategia, diseño y código, en ese orden.</p>
   </footer>
 
+</div>
+
+<!-- ============================================================
+     MODAL
+============================================================ -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="modal-close" id="modalClose" aria-label="Cerrar">✕</button>
+    <p class="eyebrow modal-eyebrow" id="modalCat">Categoría</p>
+    <h2 id="modalTitle">Nombre del proyecto</h2>
+    <p class="modal-meta" id="modalMeta">Año · Tecnologías</p>
+    <div class="modal-visual"><span id="modalVisualLabel">Vista previa del proyecto</span></div>
+    <div class="modal-body">
+      <div class="modal-block">
+        <h4>Problema</h4>
+        <p id="modalProblem"></p>
+      </div>
+      <div class="modal-block">
+        <h4>Solución</h4>
+        <p id="modalSolution"></p>
+      </div>
+      <div class="modal-block">
+        <h4>Proceso</h4>
+        <p id="modalProcess"></p>
+      </div>
+      <div class="modal-block">
+        <h4>Resultado</h4>
+        <p id="modalResult"></p>
+      </div>
+    </div>
+    <div class="modal-block" style="margin-bottom:32px;">
+      <h4>Tecnologías</h4>
+      <div class="modal-tech" id="modalTech"></div>
+    </div>
+    <a href="#" target="_blank" rel="noopener" class="modal-visit" id="modalVisit">Visitar proyecto →</a>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   DATA — PROYECTOS
+   Edita este arreglo para agregar o modificar proyectos.
+============================================================ */
+const proyectos = [
+  {
+    nombre: "Último Trámite",
+    categoria: "Sistema Web · Gobierno",
+    anio: "2026",
+    tech: ["HTML", "CSS", "JavaScript", "PHP"],
+    descripcion: "Sistema web para apoyo en trámites postmortem con un enfoque humano.",
+    problema: "Los procesos administrativos tras un fallecimiento son confusos y están dispersos entre distintas dependencias.",
+    solucion: "Una plataforma centralizada que guía al usuario paso a paso, reduciendo fricción emocional y administrativa.",
+    proceso: "Investigación de trámites reales, arquitectura de información y desarrollo de interfaz guiada.",
+    resultado: "Un flujo claro que simplifica un proceso históricamente complejo para el usuario final.",
+    link: "https://ultimotramite.lovestoblog.com/vista/first.php"
+  },
+  {
+    nombre: "Hospital General",
+    categoria: "Sistema Web · Salud",
+    anio: "2025",
+    tech: ["Bootstrap 5", "PHP", "MySQL", "pdfMake"],
+    descripcion: "Gestión de datos médicos con interfaz optimizada para personal de urgencias.",
+    problema: "El registro de pacientes en urgencias se realizaba de forma manual, lenta y propensa a errores.",
+    solucion: "Un sistema de captura estructurado con base de datos relacional y generación automática de documentos.",
+    proceso: "Diseño de base de datos (7 tablas relacionadas), backend en PHP y generación de PDF con pdfMake.",
+    resultado: "Registro de pacientes más rápido, confiable y con documentación lista para entrega inmediata.",
+    link: "Hospital_General/"
+  },
+  {
+    nombre: "IMSS",
+    categoria: "Arquitectura de Software",
+    anio: "2025",
+    tech: ["HTML", "CSS", "JavaScript", "SQL"],
+    descripcion: "Arquitectura de software para la gestión de pacientes a gran escala.",
+    problema: "Instituciones con alto volumen de pacientes requieren un sistema escalable y ordenado.",
+    solucion: "Arquitectura modular pensada para crecer sin perder rendimiento ni claridad de datos.",
+    proceso: "Modelado de datos, definición de módulos y validación de flujos de usuario.",
+    resultado: "Base sólida para un sistema de gestión hospitalaria escalable.",
+    link: "IMSS/"
+  },
+  {
+    nombre: "Perfumera",
+    categoria: "E-commerce Experimental",
+    anio: "2025",
+    tech: ["HTML", "CSS", "JavaScript"],
+    descripcion: "E-commerce experimental para solicitud de muestras de perfumería.",
+    problema: "Las tiendas de perfumería en línea no suelen facilitar la solicitud de muestras antes de comprar.",
+    solucion: "Una experiencia de catálogo minimalista enfocada en solicitar muestras de forma simple.",
+    proceso: "Diseño visual de producto, maquetación responsiva y lógica de solicitud.",
+    resultado: "Un flujo de compra experimental centrado en la experiencia sensorial del producto.",
+    link: "Perfumera/"
+  },
+  {
+    nombre: "Insignias",
+    categoria: "Exploración Visual · SVG",
+    anio: "2024",
+    tech: ["SVG", "CSS", "Illustration"],
+    descripcion: "Exploración visual de iconos y SVG inspirados en superhéroes.",
+    problema: "Se buscaba explorar identidad visual a través de iconografía ilustrada.",
+    solucion: "Un set de insignias vectoriales con estilo propio, optimizadas para web.",
+    proceso: "Bocetaje, vectorización en SVG y optimización de código para rendimiento.",
+    resultado: "Una colección de assets vectoriales reutilizables y ligeros.",
+    link: "Insignias/"
+  },
+  {
+    nombre: "App Cursos",
+    categoria: "Diseño & Desarrollo Móvil",
+    anio: "2024",
+    tech: ["Figma", "Android", "UI/UX"],
+    descripcion: "Diseño y desarrollo de aplicación móvil académica.",
+    problema: "Estudiantes necesitaban una forma centralizada de acceder a contenido de cursos.",
+    solucion: "Aplicación móvil con navegación simple y jerarquía visual clara para contenido educativo.",
+    proceso: "Prototipado en Figma, pruebas de usabilidad y desarrollo de app funcional.",
+    resultado: "Una app funcional descargable, con experiencia de usuario validada.",
+    link: "https://drive.google.com/file/d/1vTiubDL7Ao1VwCYOZ09RYBj7iO4DvyG8/view?usp=sharing"
+  },
+  {
+    nombre: "UI Design System",
+    categoria: "Prototipado · Figma",
+    anio: "2024",
+    tech: ["Figma", "Wireframing", "Design System"],
+    descripcion: "Prototipado en Figma con enfoque en experiencia de usuario.",
+    problema: "Falta de consistencia visual entre pantallas de un mismo producto.",
+    solucion: "Un sistema de componentes reutilizables con jerarquía tipográfica y de color definida.",
+    proceso: "Investigación de referencias, definición de tokens visuales y prototipado interactivo.",
+    resultado: "Un sistema de diseño coherente, listo para desarrollo.",
+    link: "https://www.figma.com/design/PJYYQzQSC2rD4tmxic5BMW/Untitled?node-id=0-1&t=fwATtpE1CGTAnm8r-1"
+  }
+];
+
+const grid = document.getElementById('projectsGrid');
+proyectos.forEach((p, i) => {
+  const row = document.createElement('button');
+  row.className = 'project-row reveal in';
+  row.setAttribute('data-index', i);
+  row.innerHTML = `
+    <span class="p-year">${p.anio}</span>
+    <span class="p-name-wrap"><h3>${p.nombre}</h3><p>${p.descripcion}</p></span>
+    <span class="p-cat">${p.categoria}</span>
+    <span class="p-arrow">↗</span>
+  `;
+  row.addEventListener('click', () => openModal(i));
+  grid.appendChild(row);
+});
+
+const overlay = document.getElementById('modalOverlay');
+function openModal(i){
+  const p = proyectos[i];
+  document.getElementById('modalCat').textContent = p.categoria;
+  document.getElementById('modalTitle').textContent = p.nombre;
+  document.getElementById('modalMeta').textContent = `${p.anio} · ${p.tech.join(', ')}`;
+  document.getElementById('modalVisualLabel').textContent = p.nombre;
+  document.getElementById('modalProblem').textContent = p.problema;
+  document.getElementById('modalSolution').textContent = p.solucion;
+  document.getElementById('modalProcess').textContent = p.proceso;
+  document.getElementById('modalResult').textContent = p.resultado;
+  document.getElementById('modalVisit').href = p.link;
+  const techWrap = document.getElementById('modalTech');
+  techWrap.innerHTML = '';
+  p.tech.forEach(t => {
+    const s = document.createElement('span');
+    s.textContent = t;
+    techWrap.appendChild(s);
+  });
+  overlay.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal(){
+  overlay.classList.remove('active');
+  document.body.style.overflow = '';
+}
+document.getElementById('modalClose').addEventListener('click', closeModal);
+overlay.addEventListener('click', (e) => { if(e.target === overlay) closeModal(); });
+document.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeModal(); });
+
+/* --- Scroll reveal --- */
+const revealEls = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('in');
+      io.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15 });
+revealEls.forEach(el => io.observe(el));
+
+/* --- Navbar shadow on scroll --- */
+const nav = document.querySelector('.navbar');
+window.addEventListener('scroll', () => {
+  if(window.scrollY > 40){
+    nav.style.boxShadow = '0 8px 30px rgba(22,24,26,0.12)';
+  } else {
+    nav.style.boxShadow = '0 8px 30px rgba(22,24,26,0.06)';
+  }
+});
+</script>
 </body>
 </html>
