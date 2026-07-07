@@ -729,6 +729,12 @@ footer{
   overflow:hidden;
   display:flex; align-items:center; justify-content:center;
 }
+.modal-visual img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:top center;
+}
 .modal-visual span{
   font-family:var(--serif);
   font-style:italic;
@@ -818,7 +824,7 @@ footer{
       <div class="hero-meta">
         <div><strong>150K+</strong>Comunidad gestionada</div>
         <div><strong>6+</strong>Años de contenido &amp; SEO</div>
-         <div><strong>5+</strong>Clientes simultáneos</div>
+        <div><strong>5+</strong>Clientes simultáneos</div>
       </div>
     </div>
     <div class="photo-stage">
@@ -875,7 +881,7 @@ footer{
         <div class="about-checklist">
           <div class="check-item"><span class="mark">✓</span> Perfil híbrido entre marketing digital y desarrollo frontend</div>
           <div class="check-item"><span class="mark">✓</span> +150,000 suscriptores gestionados de forma independiente en YouTube</div>
-          <div class="check-item"><span class="mark">✓</span> Coordinación simultánea de hasta 7 cuentas de cliente</div>
+          <div class="check-item"><span class="mark">✓</span> Coordinación simultánea de hasta 8 cuentas de cliente</div>
           <div class="check-item"><span class="mark">✓</span> De Figma a código: WordPress, Elementor y desarrollo propio</div>
         </div>
       </div>
@@ -996,7 +1002,7 @@ footer{
     <p class="eyebrow modal-eyebrow" id="modalCat">Categoría</p>
     <h2 id="modalTitle">Nombre del proyecto</h2>
     <p class="modal-meta" id="modalMeta">Año · Tecnologías</p>
-    <div class="modal-visual"><span id="modalVisualLabel">Vista previa del proyecto</span></div>
+    <div class="modal-visual" id="modalVisual"><span id="modalVisualLabel">Vista previa del proyecto</span></div>
     <div class="modal-body">
       <div class="modal-block">
         <h4>Problema</h4>
@@ -1035,6 +1041,7 @@ const proyectos = [
     anio: "2026",
     tech: ["HTML", "CSS", "JavaScript", "PHP"],
     descripcion: "Sistema web para apoyo en trámites postmortem con un enfoque humano.",
+    imagen: "img/ultimo-tramite.png",
     problema: "Los procesos administrativos tras un fallecimiento son confusos y están dispersos entre distintas dependencias.",
     solucion: "Una plataforma centralizada que guía al usuario paso a paso, reduciendo fricción emocional y administrativa.",
     proceso: "Investigación de trámites reales, arquitectura de información y desarrollo de interfaz guiada.",
@@ -1047,6 +1054,7 @@ const proyectos = [
     anio: "2025",
     tech: ["Bootstrap 5", "PHP", "MySQL", "pdfMake"],
     descripcion: "Gestión de datos médicos con interfaz optimizada para personal de urgencias.",
+    imagen: "img/hospital-general.png",
     problema: "El registro de pacientes en urgencias se realizaba de forma manual, lenta y propensa a errores.",
     solucion: "Un sistema de captura estructurado con base de datos relacional y generación automática de documentos.",
     proceso: "Diseño de base de datos (7 tablas relacionadas), backend en PHP y generación de PDF con pdfMake.",
@@ -1059,6 +1067,7 @@ const proyectos = [
     anio: "2025",
     tech: ["HTML", "CSS", "JavaScript", "SQL"],
     descripcion: "Arquitectura de software para la gestión de pacientes a gran escala.",
+    imagen: "img/imss.png",
     problema: "Instituciones con alto volumen de pacientes requieren un sistema escalable y ordenado.",
     solucion: "Arquitectura modular pensada para crecer sin perder rendimiento ni claridad de datos.",
     proceso: "Modelado de datos, definición de módulos y validación de flujos de usuario.",
@@ -1071,6 +1080,7 @@ const proyectos = [
     anio: "2025",
     tech: ["HTML", "CSS", "JavaScript"],
     descripcion: "E-commerce experimental para solicitud de muestras de perfumería.",
+    imagen: "img/perfumera.png",
     problema: "Las tiendas de perfumería en línea no suelen facilitar la solicitud de muestras antes de comprar.",
     solucion: "Una experiencia de catálogo minimalista enfocada en solicitar muestras de forma simple.",
     proceso: "Diseño visual de producto, maquetación responsiva y lógica de solicitud.",
@@ -1083,6 +1093,7 @@ const proyectos = [
     anio: "2024",
     tech: ["SVG", "CSS", "Illustration"],
     descripcion: "Exploración visual de iconos y SVG inspirados en superhéroes.",
+    imagen: "img/insignias.png",
     problema: "Se buscaba explorar identidad visual a través de iconografía ilustrada.",
     solucion: "Un set de insignias vectoriales con estilo propio, optimizadas para web.",
     proceso: "Bocetaje, vectorización en SVG y optimización de código para rendimiento.",
@@ -1095,6 +1106,7 @@ const proyectos = [
     anio: "2024",
     tech: ["Figma", "Android", "UI/UX"],
     descripcion: "Diseño y desarrollo de aplicación móvil académica.",
+    imagen: "img/app-cursos.png",
     problema: "Estudiantes necesitaban una forma centralizada de acceder a contenido de cursos.",
     solucion: "Aplicación móvil con navegación simple y jerarquía visual clara para contenido educativo.",
     proceso: "Prototipado en Figma, pruebas de usabilidad y desarrollo de app funcional.",
@@ -1107,6 +1119,7 @@ const proyectos = [
     anio: "2024",
     tech: ["Figma", "Wireframing", "Design System"],
     descripcion: "Prototipado en Figma con enfoque en experiencia de usuario.",
+    imagen: "img/ui-design.png",
     problema: "Falta de consistencia visual entre pantallas de un mismo producto.",
     solucion: "Un sistema de componentes reutilizables con jerarquía tipográfica y de color definida.",
     proceso: "Investigación de referencias, definición de tokens visuales y prototipado interactivo.",
@@ -1136,12 +1149,26 @@ function openModal(i){
   document.getElementById('modalCat').textContent = p.categoria;
   document.getElementById('modalTitle').textContent = p.nombre;
   document.getElementById('modalMeta').textContent = `${p.anio} · ${p.tech.join(', ')}`;
-  document.getElementById('modalVisualLabel').textContent = p.nombre;
   document.getElementById('modalProblem').textContent = p.problema;
   document.getElementById('modalSolution').textContent = p.solucion;
   document.getElementById('modalProcess').textContent = p.proceso;
   document.getElementById('modalResult').textContent = p.resultado;
   document.getElementById('modalVisit').href = p.link;
+
+  const visual = document.getElementById('modalVisual');
+  visual.innerHTML = '';
+  if (p.imagen) {
+    const img = document.createElement('img');
+    img.src = p.imagen;
+    img.alt = `Captura del proyecto ${p.nombre}`;
+    img.onerror = () => {
+      visual.innerHTML = `<span>${p.nombre}</span>`;
+    };
+    visual.appendChild(img);
+  } else {
+    visual.innerHTML = `<span>${p.nombre}</span>`;
+  }
+
   const techWrap = document.getElementById('modalTech');
   techWrap.innerHTML = '';
   p.tech.forEach(t => {
